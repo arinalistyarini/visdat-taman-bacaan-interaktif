@@ -319,8 +319,8 @@ ul.alert-dropdown {
 /* accordion */
 .panel-heading .accordion-toggle div:after {
     /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  
-    content:"\E113";   
+    font-family: 'FontAwesome';  
+    content:"\f106";   
     float: right;        
     color: grey;        
     overflow: no-display;
@@ -328,7 +328,7 @@ ul.alert-dropdown {
 }
 .panel-heading .accordion-toggle.collapsed div:after {
     /* symbol for "collapsed" panels */
-    content:"\E114";
+    content:"\f107";
 }
 a.accordion-toggle{
     text-decoration: none;
@@ -346,4 +346,9 @@ a.accordion-toggle{
     border: 0 solid transparent !important;
     border-radius: 0 !important;
     border-color: transparent !important;
+}
+
+.panel-heading-custom{
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
