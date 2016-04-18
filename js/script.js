@@ -12,19 +12,19 @@ var Web = {
 	createHorizontalChart: function() {
 		// dataset
 		var rawData = [
-		    [51725, 0], //Komik kecil
-		    [19682, 1],  //Novel
-		    [4040, 2],   //Komik Besar
+		    [51725, 6], //Komik kecil
+		    [19682, 5],  //Novel
+		    [4040, 4],   //Komik Besar
 		    [1743, 3],    //Majalah
-		    [1657, 4],  //Bacaan Populer
-		    [1099, 5],      //Komik Lain
-		    [696, 6]    //Lain-lain
+		    [1657, 2],  //Bacaan Populer
+		    [1099, 1],      //Komik Lain
+		    [696, 0]    //Lain-lain
 		];	 
 		var dataSet = [
 		    { label: "Precious Metal Price", data: rawData, color: "#89cf89" }
 		];
 		var ticks = [
-		    [0, "Komik Kecil"], [1, "Novel"], [2, "Komik Besar"], [3, "Majalah"], [4, "Bacaan Populer"], [5, "Komik Lain"], [6, "Lain-lain"]
+		    [6, "Komik Kecil"], [5, "Novel"], [4, "Komik Besar"], [3, "Majalah"], [2, "Bacaan Populer"], [1, "Komik Lain"], [0, "Lain-lain"]
 		];
 
 		//options
@@ -41,20 +41,14 @@ var Web = {
                 fillColor: "#89cf89"
             },
             xaxis: {
-                axisLabel: "Price (USD/oz)",
                 axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial',
                 axisLabelPadding: 10,
                 max: 52000,
                 tickColor: "#ccc",
                 color: "black"
             },
             yaxis: {
-                axisLabel: "Precious Metals",
                 axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial',
                 axisLabelPadding: 3,
                 tickLength: 0,
                 ticks: ticks,
@@ -81,11 +75,12 @@ var Web = {
 		        top: y - 40,
 		        left: x - 120,
 		        border: '2px solid ' + color,
-		        padding: '3px',
+		        padding: '9px',
 		            'font-size': '9px',
 		            'border-radius': '5px',
 		            'background-color': '#fff',
 		            'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+		            'text-align': 'center',
 		        opacity: 0.9
 		    }).appendTo("body").fadeIn(200);
 		}
@@ -108,7 +103,7 @@ var Web = {
 		            showTooltip(item.pageX,
 		            item.pageY,
 		            color,
-		                item.series.yaxis.ticks[y].label + " : <strong>" + x + "</strong> buah");
+		                "<strong>" + item.series.yaxis.ticks[y].label + "</strong><br>" + x + " buah");
 		        }
 		    } else {
 		        $("#tooltip").remove();
