@@ -7,7 +7,8 @@ $(function () {
 var Site = {
 	init: function () {
 		Site.createHorizontalChart(); // create horizontal chart @ div#horizontal-chart index.html
-		Site.createBarChart(); // create horizontal chart @ div#horizontal-chart index.html
+		Site.createStackedChart(); // create stacked bar chart @ div#bar-chart index.html
+		Site.createSimpleBarChart(); // create simple bar chart @ div#simple-bar-chart index.html
 	},
 
 	createHorizontalChart: function() {
@@ -112,7 +113,7 @@ var Site = {
 		});
 	},
 
-	createBarChart: function() {
+	createStackedChart: function() {
 		var tepatWaktu = [
 			[1420045200000, 9202], 
 			[1422723600000, 8130],  
@@ -240,5 +241,106 @@ var Site = {
 	            previous_label = null;
 	        }
 	    });
+	},
+
+	createSimpleBarChart: function() {
+		var data = [
+			[0, 1349],
+			[1, 68472],
+			[2, 18449],
+			[3, 26028],
+			[4, 1858],
+			[5, 617],
+			[6, 213],
+			[7, 15906],
+			[8, 0],
+			[9, 22],
+			[10, 65],
+			[11, 0],
+			[12, 0],
+			[13, 0],
+			[14, 194],
+		];
+        var dataset = [{ label: "2012 Average Temperature", data: data, color: "#89cf89" }];
+ 		var ticks = [[0, 0], [1, 1], [2, 2], [3, 3],[4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12]];
+
+        var options = {
+            series: {
+                bars: {
+                    show: true,
+                    lineWidth: 0,
+                    fill: "#89cf89",
+        			fillColor: "#89cf89"
+                }
+            },
+            bars: {
+                align: "center",
+                barWidth: 0.5,
+                fillColor: "#89cf89",
+
+            },
+            xaxis: {
+                ticks: ticks,
+                axisLabelUseCanvas: false,
+                axisLabelFontSizePixels: 12,
+                tickLength: 0,
+                min: -1,
+                max: 15
+            },
+            yaxis: {
+            	tickSize: 5000,
+            },
+            legend: {
+                show: false,
+            },
+            grid: {
+                hoverable: true,
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#simple-bar-chart"), dataset, options);
+
+        var previousPoint = null, previousLabel = null;
+
+        function showTooltip(x, y, contents) {
+		    $('<div id="tooltip">' + contents + '</div>').css({
+		        position: 'absolute',
+		        display: 'none',
+		        top: y - 40,
+		        left: x - 120,
+		        border: '2px solid #444',
+		        padding: '9px',
+		            'font-size': '9px',
+		            'border-radius': '5px',
+		            'background-color': '#fff',
+		            'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+		            'text-align': 'center',
+		        opacity: 0.9
+		    }).appendTo("body").fadeIn(200);
+		}
+
+
+		$("#simple-bar-chart").on("plothover", function (event, pos, item) {
+		    if (item) {
+                if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+                    previousPoint = item.dataIndex;
+                    previousLabel = item.series.label;
+                    $("#tooltip").remove();
+
+                    var x = item.datapoint[0];
+                    var y = item.datapoint[1];
+
+                    //console.log(item.series.xaxis.ticks[x].label);                
+
+                    showTooltip(item.pageX,
+                    item.pageY,
+                    "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong> °C");
+                }
+            } else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+		});
 	}
 }

@@ -258,8 +258,8 @@ ul.alert-dropdown {
 
 @media (min-width: 768px){
     .navbar-nav-yellow>li>a {
-        padding-top: 22px !important;
-        padding-bottom: 22px !important;
+        padding-top: 18px !important;
+        padding-bottom: 18px !important;
     }
 }
 
@@ -275,6 +275,11 @@ ul.alert-dropdown {
 .bar-chart-size{
    width:780px;
    height:280px;
+}
+
+.simple-bar-chart-size{
+   width:780px;
+   height:600px;
 }
 
 .visitor__tooltip {
