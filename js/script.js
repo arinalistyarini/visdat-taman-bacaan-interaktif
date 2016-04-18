@@ -6,9 +6,9 @@ $(function () {
 /* ------ ALL FUNCTIONS GO HERE ------ */
 var Site = {
 	init: function () {
-		Site.createHorizontalChart(); // create horizontal chart @ div#horizontal-chart index.html
-		Site.createStackedChart(); // create stacked bar chart @ div#bar-chart index.html
-		Site.createSimpleBarChart(); // create simple bar chart @ div#simple-bar-chart index.html
+		Site.createHorizontalChart(); // create horizontal chart @ div#horizontal-chart snippet.html
+		Site.createStackedChart(); // create stacked bar chart @ div#bar-chart snippet.html
+		Site.createSimpleBarChart(); // create simple bar chart @ div#simple-bar-chart snippet.html
 	},
 
 	createHorizontalChart: function() {

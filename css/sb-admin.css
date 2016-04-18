@@ -322,9 +322,10 @@ ul.alert-dropdown {
     font-family: 'FontAwesome';  
     content:"\f106";   
     float: right;        
-    color: grey;        
+    color: #444;        
     overflow: no-display;
-    margin-top: -20px;
+    margin-top: -24px;
+    font-size: 22px;
 }
 .panel-heading .accordion-toggle.collapsed div:after {
     /* symbol for "collapsed" panels */
@@ -351,4 +352,27 @@ a.accordion-toggle{
 .panel-heading-custom{
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+    padding: 15px 15px !important;
+    height: 110px !important;
+}
+
+.panel-title-custom{
+    color: #444;
+}
+
+.panel-heading-custom:hover{
+    opacity: 0.92;
+}
+
+.book-cover{
+    height: 80px;
+    margin-right: 14px;
+}
+
+.book-title{
+    font-weight: bold;
+}
+
+.book-author{
+    font-size: 15px;
 }
