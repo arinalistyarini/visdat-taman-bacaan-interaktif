@@ -337,3 +337,13 @@ a.accordion-toggle{
 .panel-group-custom .panel+.panel {
     margin-top: 0 !important;
 }
+
+.panel-group-custom .panel {
+    border-radius: 0 !important;
+}
+
+.panel-default-custom{
+    border: 0 solid transparent !important;
+    border-radius: 0 !important;
+    border-color: transparent !important;
+}
