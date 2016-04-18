@@ -316,3 +316,24 @@ ul.alert-dropdown {
     font-size: 13.3px;
 }
 
+/* accordion */
+.panel-heading .accordion-toggle div:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  
+    content:"\E113";   
+    float: right;        
+    color: grey;        
+    overflow: no-display;
+    margin-top: -20px;
+}
+.panel-heading .accordion-toggle.collapsed div:after {
+    /* symbol for "collapsed" panels */
+    content:"\E114";
+}
+a.accordion-toggle{
+    text-decoration: none;
+}
+
+.panel-group-custom .panel+.panel {
+    margin-top: 0 !important;
+}
