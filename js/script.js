@@ -24,7 +24,7 @@ var Web = {
 		    { label: "Precious Metal Price", data: rawData, color: "#89cf89" }
 		];
 		var ticks = [
-		    [6, "Komik Kecil"], [5, "Novel"], [4, "Komik Besar"], [3, "Majalah"], [2, "Bacaan Populer"], [1, "Komik Lain"], [0, "Lain-lain"]
+		    [0, "Lain-lain"], [1, "Komik Lain"], [2, "Bacaan Populer"], [3, "Majalah"], [4, "Komik Besar"], [5, "Novel"], [6, "Komik Kecil"]
 		];
 
 		//options
@@ -96,9 +96,7 @@ var Web = {
 		            var x = item.datapoint[0];
 		            var y = item.datapoint[1];
 
-		            var color = item.series.color;
-
-		            //console.log(item.series.xaxis.ticks[x].label);               
+		            var color = item.series.color;             
 
 		            showTooltip(item.pageX,
 		            item.pageY,

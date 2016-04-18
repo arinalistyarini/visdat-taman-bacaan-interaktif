@@ -268,7 +268,7 @@ ul.alert-dropdown {
 
 .horizontal-chart-size{
    width:800px;
-   height:250px;
+   height:300px;
 }
 
 
@@ -301,3 +301,7 @@ ul.alert-dropdown {
   border-right: 8px solid #7b7b7b;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent; }
+
+.tickLabel{
+    font-size: 13.3px;
+}
