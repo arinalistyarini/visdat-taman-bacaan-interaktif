@@ -10,6 +10,7 @@ body {
     margin-top: 50px;
     background-color: #fde17e;
     font-family: 'Raleway', sans-serif;
+    color: #444;
 }
 
 @media(min-width:768px) {
@@ -36,7 +37,7 @@ body {
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 225px;
+        padding-left: 200px;
     }
 
     #page-wrapper {
@@ -123,9 +124,9 @@ ul.alert-dropdown {
     .side-nav {
         position: fixed;
         top: 120px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
+        left: 200px;
+        width: 200px;
+        margin-left: -200px;
         border: none;
         border-radius: 0;
         overflow-y: auto;
@@ -136,7 +137,7 @@ ul.alert-dropdown {
     }
 
     .side-nav>li>a {
-        width: 225px;
+        width: 200px;
     }
 
     .side-nav li a:hover,
@@ -267,10 +268,14 @@ ul.alert-dropdown {
 }
 
 .horizontal-chart-size{
-   width:800px;
-   height:300px;
+   width:780px;
+   height:280px;
 }
 
+.bar-chart-size{
+   width:780px;
+   height:280px;
+}
 
 .visitor__tooltip {
   font-family: 'Montserrat', sans-serif;
@@ -305,3 +310,4 @@ ul.alert-dropdown {
 .tickLabel{
     font-size: 13.3px;
 }
+
