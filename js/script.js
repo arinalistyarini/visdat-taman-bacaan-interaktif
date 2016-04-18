@@ -262,7 +262,7 @@ var Site = {
 			[14, 194],
 		];
         var dataset = [{ label: "2012 Average Temperature", data: data, color: "#89cf89" }];
- 		var ticks = [[0, 0], [1, 1], [2, 2], [3, 3],[4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12]];
+ 		
 
         var options = {
             series: {
@@ -280,12 +280,10 @@ var Site = {
 
             },
             xaxis: {
-                ticks: ticks,
+                tickSize: 1,
                 axisLabelUseCanvas: false,
                 axisLabelFontSizePixels: 12,
-                tickLength: 0,
-                min: -1,
-                max: 15
+                tickLength: 0
             },
             yaxis: {
             	tickSize: 5000,
@@ -328,14 +326,15 @@ var Site = {
                     previousLabel = item.series.label;
                     $("#tooltip").remove();
 
-                    var x = item.datapoint[0];
-                    var y = item.datapoint[1];
-
-                    //console.log(item.series.xaxis.ticks[x].label);                
-
-                    showTooltip(item.pageX,
-                    item.pageY,
-                    "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong> °C");
+                     var x = item.datapoint[0];
+                        var y = item.datapoint[1];
+ 
+ 
+                        //console.log(item.series.xaxis.ticks[x].label);                
+ 
+                        showTooltip(item.pageX,
+                        item.pageY,
+                        item.series.xaxis.ticks[x+1].label + " : <strong>" + y + "</strong> °C");
                 }
             } else {
                 $("#tooltip").remove();
