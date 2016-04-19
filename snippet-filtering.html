@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-yellow navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <img src="img/header120.jpg" class="img-responsive img-header center-block">
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav navbar-nav-yellow">
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-custom fa-dashboard"></i> Halaman Utama</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-custom fa-bar-chart-o"></i> Durasi Peminjaman</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-custom fa-table"></i> Terbanyak Disewa</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        Buku yang paling banyak disewa di Pitimoss<br>
+                        <br>
+                        <div class="col-md-9">
+                          <select class="dropdown-filtering">
+                            <option value="komik" selected>Komik</option>
+                            <option value="nonkomik">Nonkomik</option>
+                          </select>
+                        </div>
+                        <br><br>
+                        <div id="filter-komik">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="best-book-title-komik">
+                                        Komik
+                                    </div>
+                                    <!-- <div class="best-book-title-nonkomik">
+                                        Nonkomik
+                                    </div> -->
+                                    <div class="panel-group panel-group-custom" id="accordion">
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+                                        <div class="panel-heading panel-heading-custom" style="background:#eca821">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
+                                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseFive" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="filter-non-komik">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <!-- <div class="best-book-title-komik">
+                                        Komik
+                                    </div> -->
+                                    <div class="best-book-title-nonkomik">
+                                        Nonkomik
+                                    </div>
+                                    <div class="panel-group panel-group-custom" id="accordion">
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+                                        <div class="panel-heading panel-heading-custom" style="background:#eca821">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOneN">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilzsan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseOneN" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoN">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dissa adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseTwoN" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThreeN">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalahses Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseThreeN" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
+                                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFourN">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseFourN" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
+                                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFiveN">
+                                            <div class="panel-title panel-title-custom">
+                                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                                <span class="book-line-break"></span>
+                                                    <span class="book-title">Dilan: Dia adalah Dilanku Tahun 1990</span><br>
+                                                    <span class="book-author">Pidi Baiq</span>
+                                            </div>
+                                          </a>      
+                                        </div>
+                                        <div id="collapseFiveN" class="panel-collapse collapse">
+                                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
+                                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan Februari (atau apapun) 2015.<br>
+                                            <br>
+                                            <strong>Judul</strong><br>
+                                            Dilalalala (sebutkan nama judul)
+                                            <br><br>
+                                            <strong>Penerbit</strong><br>
+                                            Gramedia
+                                            <br><br>
+                                            <strong>Jumlah halaman</strong><br>
+                                            120 halaman
+                                            <br><br>
+                                            <strong>Tahun Terbit</strong><br>
+                                            2018
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/js/flot/excanvas.min.js"></script><![endif]-->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.time.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.orderBars.js"></script>
+    <!-- <script type="text/javascript" src="http://www.pikemere.co.uk/blog/js/jquery.flot.orderBars.js"></script> -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
