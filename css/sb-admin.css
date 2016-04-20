@@ -277,6 +277,11 @@ ul.alert-dropdown {
    height:280px;
 }
 
+.bar-chart-filt-size{
+   width:700px;
+   height:280px;
+}
+
 .simple-bar-chart-size{
    width:780px;
    height:600px;
