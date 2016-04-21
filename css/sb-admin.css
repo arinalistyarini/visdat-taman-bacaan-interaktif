@@ -455,3 +455,89 @@ a.accordion-toggle{
 .panel-body-custom{
     background: #f4f4f4 !important;
 }
+
+.text-bold-red{
+    color: #df5842;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.text-bold-green{
+    color: #89cf89;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+blockquote.quote-front-page {
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    border-left: 0 solid #eee !important;
+    margin: 0 !important;
+}
+blockquote.quote-front-page:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote.quote-front-page:after {
+    content: close-quote;
+    color: #ccc;
+    font-size: 3.7em;
+    line-height: 0.1em;
+    vertical-align: -0.4em;
+    margin-left: 14px;
+}
+
+blockquote.quote-front-page p {
+  display: inline;
+}
+
+.btn-green {
+    font-size: 16px;
+    color: #fff;
+    background-color: #89cf89;
+    border-color: #89cf89;
+}
+
+.btn-green:hover,
+.btn-green:focus{
+    color: #fff;
+    background-color: #6abb6a;
+    border-color: #6abb6a;
+}
+
+.grid-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.white-box {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 15px 25px !important;
+}
+
+.big-title {
+    font-size: 27px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.smaller-title{
+    font-size: 19px;
+}
+
+.text-emphasize{
+    color: #df5842;
+    font-weight: bold;
+}
+
+.jumlah-buku-chart-size{
+    width: 850px;
+    height: 320px;
+}

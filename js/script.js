@@ -22,8 +22,12 @@ var Site = {
 		Site.createStackedChartFiltTepatWaktuOnlyGrs(); // create stacked bar chart yang terlambat saja @ div#bar-chart-filt-grs snippet-filtering.html
 		Site.createStackedChartFiltTerlambatOnlyGrs(); // create stacked bar chart yang terlambat saja @ div#bar-chart-filt-grs snippet-filtering.html
 		Site.filterTerlambatTepatWaktuChecklistGrs(); //filtering terlambat tepat waktu checklist @ snippet-filtering-grs.html
+
+		//fungsi untuk di halaman jumlah-buku-pitimoss.html
+		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ jumlah-buku-pitimoss.html
 	},
 
+	//fungsi untuk di halaman snippet.html
 	createHorizontalChart: function() {
 		//check file name, fungsi baru jalan kalo file htmlnya snippet.html
 		var windowLoc = $(location).attr('pathname');
@@ -372,6 +376,7 @@ var Site = {
         }
 	},
 
+	//fungsi untuk di halaman snippet-filtering.html
 	filterKomikNonKomikSnippet: function(){
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
@@ -1315,6 +1320,115 @@ var Site = {
 					$('.filter-terlambat-grs').show();
 				}
         	});
+        }
+	},
+
+	//fungsi untuk di halaman jumlah-buku-pitimoss.html
+	createJumlahBukuChart: function(){
+		//check file name, fungsi baru jalan kalo file htmlnya snippet.html
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "jumlah-buku-pitimoss.html") {
+        	// dataset
+			var rawData = [
+			    [51725, 6], //Komik kecil
+			    [19682, 5], //Novel
+			    [4040, 4],  //Komik Besar
+			    [1743, 3],  //Majalah
+			    [1657, 2],  //Bacaan Populer
+			    [1099, 1],  //Komik Lain
+			    [696, 0]    //Lain-lain
+			];	 
+			var dataSet = [
+			    { label: "Jumlah Buku Pitimoss Tahun 2015", data: rawData, color: "#89cf89" }
+			];
+			var ticks = [
+			    [0, "Lain-lain"], [1, "Komik Lain"], [2, "Bacaan Populer"], [3, "Majalah"], [4, "Komik Besar"], [5, "Novel"], [6, "Komik Kecil"]
+			];
+
+			//options
+			var options = {
+	            series: {
+	                bars: {
+	                    show: true
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                barWidth: 0.39,
+	                horizontal: true,
+	                fillColor: "#89cf89"
+	            },
+	            xaxis: {
+	                axisLabelUseCanvas: true,
+	                axisLabelPadding: 10,
+	                max: 55000,
+	                tickColor: "#ccc",
+	                color: "#444",
+	                tickSize: 5000
+	            },
+	            yaxis: {
+	                axisLabelUseCanvas: true,
+	                axisLabelPadding: 3,
+	                tickLength: 0,
+	                ticks: ticks,
+	                color: "#444"
+	            },
+	            legend: {
+	                show: false
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            }
+	        };
+
+	        $.plot($("#jumlah-buku-chart"), dataSet, options);
+
+
+	        var previousPoint = null,
+	    		previousLabel = null;
+	        function showTooltip(x, y, color, contents) {
+			    $('<div id="tooltip">' + contents + '</div>').css({
+			        position: 'absolute',
+			        display: 'none',
+			        top: y - 40,
+			        left: x - 120,
+			        border: '2px solid ' + color,
+			        padding: '9px',
+			            'font-size': '9px',
+			            'border-radius': '5px',
+			            'background-color': '#fff',
+			            'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+			            'text-align': 'center',
+			        opacity: 0.9
+			    }).appendTo("body").fadeIn(200);
+			}
+
+
+			$("#jumlah-buku-chart").on("plothover", function (event, pos, item) {
+			    if (item) {
+			        if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
+			            previousPoint = item.dataIndex;
+			            previousLabel = item.series.label;
+			            $("#tooltip").remove();
+
+			            var x = item.datapoint[0];
+			            var y = item.datapoint[1];
+
+			            var color = item.series.color;             
+
+			            showTooltip(item.pageX,
+			            item.pageY,
+			            color,
+			                "<strong>" + item.series.yaxis.ticks[y].label + "</strong><br>" + x + " buah");
+			        }
+			    } else {
+			        $("#tooltip").remove();
+			        previousPoint = null;
+			    }
+			});
         }
 	}
 }
