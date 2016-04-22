@@ -26,6 +26,7 @@ var Site = {
 		//fungsi untuk di halaman buku-pitimoss.html
 		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ buku-pitimoss.html
 		Site.showMoreInfoBukuPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di buku-pitimoss.html
+		Site.filterKomikOrNonKomik(); // filter komik, nonkomik, or all @ buku-pitimoss.html
 	},
 
 	//fungsi untuk di halaman snippet.html
@@ -1473,6 +1474,28 @@ var Site = {
 	                $(this).parents("div.grid-center").find("div.info-content-terlaris").slideDown();
 	            }
 			});
+        }
+	},
+
+	filterKomikOrNonKomik: function(){
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "buku-pitimoss.html"){
+        	$('.input-komik').prop('checked', true);
+        	$('.input-nonkomik').prop('checked', true);
+
+        	// if sepanjang tahun 2015
+        	$('form.filter-komik-nonkomik').change(function () {
+        		if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+        			$('.input-nonkomik').prop('disabled', true);
+
+	        		$('.show-all-filter-tahun-2015').hide();
+	        		$('.filter-nonkomik-tahun-2015-to-clone').clone().appendTo('.clone-filter-result-tahun-2015');
+					$('.show-komik-or-nonkomik-filter-tahun-2015').show();
+        		}
+        	});
         }
 	}
 }
