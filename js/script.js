@@ -1486,14 +1486,184 @@ var Site = {
         	$('.input-komik').prop('checked', true);
         	$('.input-nonkomik').prop('checked', true);
 
-        	// if sepanjang tahun 2015
-        	$('form.filter-komik-nonkomik').change(function () {
-        		if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
-        			$('.input-nonkomik').prop('disabled', true);
+        	$('.show-all-filter-tahun-2015').show();
+			$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
 
+			$('.show-all-filter-januari-2015').hide();
+			$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+
+			$('select.dropdown-filtering-terlaris-2015').change(function () {
+			    var current = this.value;
+			    if (current == 'sepanjangtahun') {
+			    	$('.changeableTitle').html("SEPANJANG TAHUN 2015");
+
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//show sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').show();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+			    }
+			    else if (current == 'januari') {
+			    	$('.changeableTitle').html("JANUARI 2015");
+
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//show sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
 	        		$('.show-all-filter-tahun-2015').hide();
-	        		$('.filter-nonkomik-tahun-2015-to-clone').clone().appendTo('.clone-filter-result-tahun-2015');
-					$('.show-komik-or-nonkomik-filter-tahun-2015').show();
+
+	        		//show januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').show();
+			    }
+			    else if (current == 'februari') {
+			    	$('.changeableTitle').html("FEBRUARI 2015");
+
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'maret') {
+			    	$('.changeableTitle').html("MARET 2015");
+			    	
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'april') {
+			    	$('.changeableTitle').html("APRIL 2015");
+			    	
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'mei') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'juni') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'juli') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'agustus') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'september') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'oktober') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'november') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			    else if (current == 'desember') {
+			    	$('.input-komik').prop('disabled', false);
+        			$('.input-nonkomik').prop('disabled', false);
+			    	$('.input-komik').prop('checked', true);
+		        	$('.input-nonkomik').prop('checked', true);
+			    }
+			});
+
+        	$('form.filter-komik-nonkomik').change(function () {
+        		var dropdownValue = $('select.dropdown-filtering-terlaris-2015').val();
+        		if(dropdownValue == "sepanjangtahun"){
+        			// if dropdown sepanjang tahun 2015
+	        		if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-tahun-2015').hide();
+		        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.clone-filter-result-tahun-2015');
+						$('.show-komik-or-nonkomik-filter-tahun-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-tahun-2015').hide();
+		        		$('.filter-komik-tahun-2015-to-clone').appendTo('.clone-filter-result-tahun-2015');
+						$('.show-komik-or-nonkomik-filter-tahun-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+		        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+		        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+		        		$('.show-all-filter-tahun-2015').show();
+	        		}
+        		}
+        		else if(dropdownValue == "januari"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-januari-2015').hide();
+		        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.clone-filter-result-januari-2015');
+						$('.show-komik-or-nonkomik-filter-januari-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-januari-2015').hide();
+		        		$('.filter-komik-januari-2015-to-clone').appendTo('.clone-filter-result-januari-2015');
+						$('.show-komik-or-nonkomik-filter-januari-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+		        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+		        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+		        		$('.show-all-filter-januari-2015').show();
+	        		}
         		}
         	});
         }
