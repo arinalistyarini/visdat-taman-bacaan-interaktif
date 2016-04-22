@@ -387,7 +387,8 @@ a.accordion-toggle{
     margin-top: -39px;
     right: 19px;
     font-size: 30px;
-    color: #f4f4f4;
+    /*color: #f4f4f4;*/
+    color: #fff;
     opacity: .42;
 }
 
@@ -397,7 +398,8 @@ a.accordion-toggle{
     margin-top: -39px;
     right: 19px;
     font-size: 30px;
-    color: #f4f4f4;
+    /*color: #f4f4f4;*/
+    color: #fff;
     opacity: .42;
 }
 
@@ -407,7 +409,8 @@ a.accordion-toggle{
     margin-top: -39px;
     right: 19px;
     font-size: 30px;
-    color: #f4f4f4;
+    /*color: #f4f4f4;*/
+    color: #fff;
     opacity: .42;
 }
 
@@ -417,7 +420,8 @@ a.accordion-toggle{
     margin-top: -39px;
     right: 19px;
     font-size: 30px;
-    color: #f4f4f4;
+    /*color: #f4f4f4;*/
+    color: #fff;
     opacity: .42;
 }
 
@@ -427,7 +431,8 @@ a.accordion-toggle{
     margin-top: -39px;
     right: 19px;
     font-size: 30px;
-    color: #f4f4f4;
+    /*color: #f4f4f4;*/
+    color: #fff;
     opacity: .5;
 }
 
@@ -520,6 +525,7 @@ blockquote.quote-front-page p {
     background: #fff;
     border: 1px solid #ccc;
     padding: 15px 25px !important;
+    margin-bottom: 15px;
 }
 
 .big-title {
@@ -532,6 +538,11 @@ blockquote.quote-front-page p {
     font-size: 19px;
 }
 
+.green-bold {
+    font-weight: bold;
+    color: #89cf89;
+}
+
 .text-emphasize{
     color: #df5842;
     font-weight: bold;
@@ -540,4 +551,34 @@ blockquote.quote-front-page p {
 .jumlah-buku-chart-size{
     width: 850px;
     height: 320px;
+    margin-top: 20px;
+}
+
+a.toggle-info {
+    color: #bdbdbd;
+    cursor: pointer;
+}
+
+a.toggle-info:hover,
+a.toggle-info:active,
+a.toggle-info:focus {
+    color: #a8a8a8;
+}
+
+
+.pager li>a.nav-btn-green {
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #89cf89;
+    border-color: #89cf89;
+    border: 1px solid transparent;
+    border-radius: 4px !important;
+}
+
+.pager li>a.nav-btn-green:hover, 
+.pager li>a.nav-btn-green:focus {
+    color: #fff;
+    background-color: #6abb6a;
+    border-color: #6abb6a;
 }

@@ -23,8 +23,9 @@ var Site = {
 		Site.createStackedChartFiltTerlambatOnlyGrs(); // create stacked bar chart yang terlambat saja @ div#bar-chart-filt-grs snippet-filtering.html
 		Site.filterTerlambatTepatWaktuChecklistGrs(); //filtering terlambat tepat waktu checklist @ snippet-filtering-grs.html
 
-		//fungsi untuk di halaman jumlah-buku-pitimoss.html
-		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ jumlah-buku-pitimoss.html
+		//fungsi untuk di halaman buku-pitimoss.html
+		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ buku-pitimoss.html
+		Site.showMoreInfoBukuPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di buku-pitimoss.html
 	},
 
 	//fungsi untuk di halaman snippet.html
@@ -1323,13 +1324,13 @@ var Site = {
         }
 	},
 
-	//fungsi untuk di halaman jumlah-buku-pitimoss.html
+	//fungsi untuk di halaman buku-pitimoss.html
 	createJumlahBukuChart: function(){
-		//check file name, fungsi baru jalan kalo file htmlnya snippet.html
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "jumlah-buku-pitimoss.html") {
+        if(lastPart == "buku-pitimoss.html") {
         	// dataset
 			var rawData = [
 			    [51725, 6], //Komik kecil
@@ -1366,21 +1367,30 @@ var Site = {
 	                max: 55000,
 	                tickColor: "#ccc",
 	                color: "#444",
-	                tickSize: 5000
+	                tickSize: 5000,
+	                font: {
+						weight:"bold",
+						size: 14
+					}
 	            },
 	            yaxis: {
 	                axisLabelUseCanvas: true,
 	                axisLabelPadding: 3,
 	                tickLength: 0,
 	                ticks: ticks,
-	                color: "#444"
+	                color: "#444",
+	                font: {
+						weight:"bold",
+						size: 14
+					}
 	            },
 	            legend: {
 	                show: false
 	            },
 	            grid: {
 	                hoverable: true,
-	                borderWidth: 0
+	                borderWidth: 0,
+	                labelMargin: 13,
 	            }
 	        };
 
@@ -1428,6 +1438,40 @@ var Site = {
 			        $("#tooltip").remove();
 			        previousPoint = null;
 			    }
+			});
+        }
+	},
+
+	showMoreInfoBukuPitimossPage: function(){
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "buku-pitimoss.html"){
+        	// fungsi collapsible item *show/hide* dari jumlah buku pitimoss 2015 @ buku-pitimoss.html
+			$('a.hide-show-info-jumlah-buku').click(function(event){
+				event.stopPropagation();
+				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-up").addClass("fa-angle-down");
+	                $(this).parents("div.grid-center").find("div.info-content-jumlah-buku").slideUp();
+	            }
+	            else if($(this).children("i.arrow-changeable").hasClass("fa-angle-down")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-down").addClass("fa-angle-up");
+	                $(this).parents("div.grid-center").find("div.info-content-jumlah-buku").slideDown();
+	            }
+			});
+
+			// fungsi collapsible item *show/hide* dari buku pinjaman terlaris pitimoss 2015 @ buku-pitimoss.html
+			$('a.hide-show-info-terlaris').click(function(event){
+				event.stopPropagation();
+				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-up").addClass("fa-angle-down");
+	                $(this).parents("div.grid-center").find("div.info-content-terlaris").slideUp();
+	            }
+	            else if($(this).children("i.arrow-changeable").hasClass("fa-angle-down")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-down").addClass("fa-angle-up");
+	                $(this).parents("div.grid-center").find("div.info-content-terlaris").slideDown();
+	            }
 			});
         }
 	}
