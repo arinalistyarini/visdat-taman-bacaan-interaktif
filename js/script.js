@@ -3055,10 +3055,22 @@ var Site = {
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: true,
 		            axisLabelPadding: 1,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					timezone: "browser",
+					color: "#444"
 		        },
 		        yaxis: {
 		            axisLabel: 'Value',
 		            axisLabelUseCanvas: true,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 		        },
 		        grid: {
 		            hoverable: true,
@@ -3069,8 +3081,8 @@ var Site = {
 		            labelBoxBorderColor: "none"
 		        },
 		        tooltip: {
-		        	show: true
-		        },
+					show: true
+				},
 		        colors: ["#89cf89", "#df5842"]
 		    });
 
@@ -3111,9 +3123,21 @@ var Site = {
 		            tickLength: 0,
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					timezone: "browser",
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
@@ -3122,9 +3146,15 @@ var Site = {
 	                hoverable: true,
 	                borderWidth: 0
 	            },
-	            tooltip:{
-	            	show: true
-	            }
+	            tooltip: {
+					show: true,
+					content: '<div style="background-color: rgba(255,255,255,0.75); border: 1px solid #000; padding: .25em"><h4 style>%s</h4><ul><li>X is %x</li><li>Y is %y</li></ul></div>',
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#pengembalian-buku-chart-1-tepat-waktu"), data, options);
@@ -3166,10 +3196,22 @@ var Site = {
 		            tickLength: 0,
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					timezone: "browser",
+					color: "#444"
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
-	            	max: 10000
+	            	max: 10000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
@@ -3247,7 +3289,13 @@ var Site = {
 			        tickSize: [1, "month"],        
 			        tickLength: 0,
 			        min: 1418808400000,
-		            max: 1450112400000
+		            max: 1450112400000,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					timezone: "browser",
+					color: "#444"
 			    },
 			    bars: {
 	                align: "center",
@@ -3256,7 +3304,13 @@ var Site = {
 			    yaxes: [{
 			            position: "left",
 			            max: 10000,
-			            tickSize: 2000
+			            tickSize: 2000,
+			            font: {
+							weight:"bold",
+							size: 14
+						},
+						color: "#444",
+						tickColor: "#ccc"
 			        }
 			    ],
 			    legend: {
@@ -3325,7 +3379,13 @@ var Site = {
 			        tickSize: [1, "month"],        
 			        tickLength: 0,
 			        min: 1418808400000,
-		            max: 1450112400000
+		            max: 1450112400000,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					timezone: "browser",
+					color: "#444"
 			    },
 			    bars: {
 	                align: "center",
@@ -3334,7 +3394,13 @@ var Site = {
 			    yaxes: [{
 			            position: "left",
 			            max: 10000,
-			            tickSize: 2000
+			            tickSize: 2000,
+			            font: {
+							weight:"bold",
+							size: 14
+						},
+						color: "#444",
+						tickColor: "#ccc"
 			        }
 			    ],
 			    legend: {
@@ -3414,16 +3480,16 @@ var Site = {
         	$.plot("#pengembalian-buku-chart-2-garis", datasss, {
                 xaxis: {
                 	tickColor: "transparent",
-                	/*font: {
-						weight:"normal",
-						family:"'Montserrat', sans-serif",
-						color: "#1a1a1a"
-					}*/
-
+                	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
 					mode: "time",
 		            min: 1418808400000,
 		            max: 1450112400000,
 		            tickLength: 0,
+		            timezone: "browser",
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: true,
 		            axisLabelPadding: 1,
@@ -3432,12 +3498,12 @@ var Site = {
 			        min: 0,
 			        max: 10000,
 			        tickSize: 2000,
-			        /*font: {
-						size:14,
-						weight:"normal",
-						family:"'Montserrat', sans-serif",
-						color: "#1a1a1a"
-					}*/
+			        font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 			    },
                 grid: {
                 	show: true,
@@ -3454,11 +3520,11 @@ var Site = {
                 	},
                 	borderWidth: 1*/
                 },
-                tooltip: {
+                /*tooltip: {
                     show: true,
-                    /*content: "<div class='visitor__tooltip'>%x<br><span class='visitor__tooltip--larger'>%y buku</span></div>",
-                    defaultTheme: false*/
-                },
+                    content: "<div class='visitor__tooltip'>%x<br><span class='visitor__tooltip--larger'>%y buku</span></div>",
+                    defaultTheme: false
+                },*/
                 legend: {
                     show: true,
                     /*labelFormatter: function(label, series) {
@@ -3512,11 +3578,23 @@ var Site = {
 		            max: 1450112400000,
 		            tickLength: 0,
 		            tickSize: [1, "month"],
+		            timezone: "browser",
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444"
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
-	            	min: 0
+	            	min: 0,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
@@ -3573,11 +3651,23 @@ var Site = {
 		            tickLength: 0,
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					timezone: "browser",
+					color: "#444"
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
 	            	max: 10000,
-	            	min: 0
+	            	min: 0,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
@@ -3648,10 +3738,22 @@ var Site = {
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: true,
 		            axisLabelPadding: 1,
+		            timezone: "browser",
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444"
 		        },
 		        yaxis: {
 		            axisLabel: 'Value',
 		            axisLabelUseCanvas: true,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 		        },
 		        grid: {
 		            hoverable: true,
@@ -3702,11 +3804,23 @@ var Site = {
 		            min: 1418808400000,
 		            max: 1450112400000,
 		            tickLength: 0,
+		            timezone: "browser",
 		            tickSize: [1, "month"],
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444"
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
@@ -3758,11 +3872,23 @@ var Site = {
 		            max: 1450112400000,
 		            tickLength: 0,
 		            tickSize: [1, "month"],
+		            timezone: "browser",
 		            axisLabelUseCanvas: false,
+		            font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444"
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
-	            	max: 10000
+	            	max: 10000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
 	            },
 	            legend: {
 	                show: true,
