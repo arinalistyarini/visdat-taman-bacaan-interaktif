@@ -4259,7 +4259,7 @@ var Site = {
 				[13, 0],
 				[14, 194],
 			];
-	        var dataset = [{ label: "2012 Average Temperature", data: data, color: "#89cf89" }];
+	        var dataset = [{ label: "Durasi peminjaman", data: data, color: "#89cf89" }];
 	 		
 
 	        var options = {
@@ -4290,7 +4290,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            yaxis: {
-	            	tickSize: 5000,
+	            	tickSize: 4000,
 	            	font: {
 						weight:"bold",
 						size: 14
@@ -4299,7 +4299,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: false,
+	                show: true,
 	            },
 	            grid: {
 	                hoverable: true,

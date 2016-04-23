@@ -251,14 +251,13 @@ ul.alert-dropdown {
 
 .fa-custom {
     padding-left: 10px;
-    padding-right: 30px;
-    font-size: 20px !important;
+    padding-right: 24px;
+    font-size: 15px !important;
 }
 
 @media (min-width: 768px){
     .navbar-nav-yellow>li>a {
-        padding-top: 18px !important;
-        padding-bottom: 18px !important;
+        padding: 18px 6px !important;
     }
 }
 
@@ -524,7 +523,11 @@ blockquote.quote-front-page p {
     background: #fff;
     border: 1px solid #ccc;
     padding: 15px 25px !important;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+}
+
+.white-box-last{
+    margin-bottom: -3px !important;
 }
 
 .big-title {
@@ -624,3 +627,8 @@ a.toggle-info:focus {
   border-right: 8px solid #444;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent; }
+
+.rata-rata-waktu-peminjaman-chart-size{
+    width: 720px;
+    height: 400px;
+}
