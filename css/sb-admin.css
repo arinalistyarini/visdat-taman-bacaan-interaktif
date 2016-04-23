@@ -582,3 +582,13 @@ a.toggle-info:focus {
     background-color: #6abb6a;
     border-color: #6abb6a;
 }
+
+.pengembalian-buku-chart-1-size{
+    width: 700px;
+    height: 300px;
+}
+
+.pengembalian-buku-chart-2-size{
+    width: 700px;
+    height: 300px;   
+}

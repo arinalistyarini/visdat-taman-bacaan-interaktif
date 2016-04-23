@@ -27,6 +27,11 @@ var Site = {
 		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ buku-pitimoss.html
 		Site.showMoreInfoBukuPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di buku-pitimoss.html
 		Site.filterKomikOrNonKomik(); // filter komik, nonkomik, or all @ buku-pitimoss.html
+
+		//fungsi untuk di halaman transaksi-pitimoss.html
+		Site.showMoreInfoTransaksiPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di transaksi-pitimoss.html
+		Site.createChartOfPengembalianBukuVer1(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang) @ transaksi-pitimoss.html
+		Site.createChartOfPengembalianBukuVer2(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang, hanya grafik garis, grafik garis + batang) @ transaksi-pitimoss.html
 	},
 
 	//fungsi untuk di halaman snippet.html
@@ -434,12 +439,10 @@ var Site = {
 				[1446310800000, 3166],
 				[1448902800000, 3756]
 		    	];
-		    //var bar_customised_3 = [[1388534400000, 80], [1391212800000, 40], [1393632000000, 47], [1396310400000, 22], [1398902400000, 24]];
-		 
+		    
 		    var data = [
 		        { label: "Tepat waktu", data: tepatWaktu },
-		        { label: "Terlambat", data: terlambat },
-		        //{ label: "Series 3", data: bar_customised_3 }
+		        { label: "Terlambat", data: terlambat }
 		    ];
 		 
 		    $.plot($("#bar-chart-filt"), data, {
@@ -1392,54 +1395,13 @@ var Site = {
 	                hoverable: true,
 	                borderWidth: 0,
 	                labelMargin: 13,
+	            },
+	            tooltip: {
+	            	show: true
 	            }
 	        };
 
 	        $.plot($("#jumlah-buku-chart"), dataSet, options);
-
-
-	        var previousPoint = null,
-	    		previousLabel = null;
-	        function showTooltip(x, y, color, contents) {
-			    $('<div id="tooltip">' + contents + '</div>').css({
-			        position: 'absolute',
-			        display: 'none',
-			        top: y - 40,
-			        left: x - 120,
-			        border: '2px solid ' + color,
-			        padding: '9px',
-			            'font-size': '9px',
-			            'border-radius': '5px',
-			            'background-color': '#fff',
-			            'font-family': 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-			            'text-align': 'center',
-			        opacity: 0.9
-			    }).appendTo("body").fadeIn(200);
-			}
-
-
-			$("#jumlah-buku-chart").on("plothover", function (event, pos, item) {
-			    if (item) {
-			        if ((previousLabel != item.series.label) || (previousPoint != item.dataIndex)) {
-			            previousPoint = item.dataIndex;
-			            previousLabel = item.series.label;
-			            $("#tooltip").remove();
-
-			            var x = item.datapoint[0];
-			            var y = item.datapoint[1];
-
-			            var color = item.series.color;             
-
-			            showTooltip(item.pageX,
-			            item.pageY,
-			            color,
-			                "<strong>" + item.series.yaxis.ticks[y].label + "</strong><br>" + x + " buah");
-			        }
-			    } else {
-			        $("#tooltip").remove();
-			        previousPoint = null;
-			    }
-			});
         }
 	},
 
@@ -1492,6 +1454,39 @@ var Site = {
 			$('.show-all-filter-januari-2015').hide();
 			$('.show-komik-or-nonkomik-filter-januari-2015').hide();
 
+			$('.show-all-filter-februari-2015').hide();
+			$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+
+			$('.show-all-filter-maret-2015').hide();
+			$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+
+			$('.show-all-filter-april-2015').hide();
+			$('.show-komik-or-nonkomik-filter-april-2015').hide();
+
+			$('.show-all-filter-mei-2015').hide();
+			$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+
+			$('.show-all-filter-juni-2015').hide();
+			$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+
+			$('.show-all-filter-juli-2015').hide();
+			$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+
+			$('.show-all-filter-agustus-2015').hide();
+			$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+
+			$('.show-all-filter-september-2015').hide();
+			$('.show-komik-or-nonkomik-filter-september-2015').hide();
+
+			$('.show-all-filter-oktober-2015').hide();
+			$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+
+			$('.show-all-filter-november-2015').hide();
+			$('.show-komik-or-nonkomik-filter-november-2015').hide();
+
+			$('.show-all-filter-desember-2015').hide();
+			$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+
 			$('select.dropdown-filtering-terlaris-2015').change(function () {
 			    var current = this.value;
 			    if (current == 'sepanjangtahun') {
@@ -1513,6 +1508,72 @@ var Site = {
 	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
 	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
 	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+					$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'januari') {
 			    	$('.changeableTitle').html("JANUARI 2015");
@@ -1522,7 +1583,7 @@ var Site = {
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
 
-		        	//show sepanjang2015
+		        	//hide sepanjang2015
 		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
 	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
 	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
@@ -1533,6 +1594,72 @@ var Site = {
 	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
 	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
 	        		$('.show-all-filter-januari-2015').show();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'februari') {
 			    	$('.changeableTitle').html("FEBRUARI 2015");
@@ -1541,6 +1668,84 @@ var Site = {
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//show februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').show();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'maret') {
 			    	$('.changeableTitle').html("MARET 2015");
@@ -1549,6 +1754,84 @@ var Site = {
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//show maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').show();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'april') {
 			    	$('.changeableTitle').html("APRIL 2015");
@@ -1557,54 +1840,772 @@ var Site = {
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').show();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'mei') {
+			    	$('.changeableTitle').html("MEI 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//show mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').show();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'juni') {
+			    	$('.changeableTitle').html("JUNI 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// show juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').show();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'juli') {
+			    	$('.changeableTitle').html("JULI 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// show juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').show();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'agustus') {
+			    	$('.changeableTitle').html("AGUSTUS 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// show agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').show();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'september') {
+			    	$('.changeableTitle').html("SEPTEMBER 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// show september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').show();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'oktober') {
+			    	$('.changeableTitle').html("OKTOBER 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// show oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').show();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'november') {
+			    	$('.changeableTitle').html("NOVEMBER 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// show november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').show();
+
+	        		// hide desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').hide();
 			    }
 			    else if (current == 'desember') {
+			    	$('.changeableTitle').html("DESEMBER 2015");
+
 			    	$('.input-komik').prop('disabled', false);
         			$('.input-nonkomik').prop('disabled', false);
 			    	$('.input-komik').prop('checked', true);
 		        	$('.input-nonkomik').prop('checked', true);
+
+		        	//hide sepanjang2015
+		        	$('.show-komik-or-nonkomik-filter-tahun-2015').hide();
+	        		$('.filter-komik-tahun-2015-to-clone').appendTo('.filter-komik-tahun-2015-to-clone__container');
+	        		$('.filter-nonkomik-tahun-2015-to-clone').appendTo('.filter-nonkomik-tahun-2015-to-clone__container');
+	        		$('.show-all-filter-tahun-2015').hide();
+
+	        		//hide januari
+					$('.show-komik-or-nonkomik-filter-januari-2015').hide();
+	        		$('.filter-komik-januari-2015-to-clone').appendTo('.filter-komik-januari-2015-to-clone__container');
+	        		$('.filter-nonkomik-januari-2015-to-clone').appendTo('.filter-nonkomik-januari-2015-to-clone__container');
+	        		$('.show-all-filter-januari-2015').hide();
+
+	        		//hide februari
+	        		$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+	        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+	        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+	        		$('.show-all-filter-februari-2015').hide();
+
+	        		//hide maret
+	        		$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+	        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+	        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+	        		$('.show-all-filter-maret-2015').hide();
+
+	        		//hide april
+	        		$('.show-komik-or-nonkomik-filter-april-2015').hide();
+	        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+	        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+	        		$('.show-all-filter-april-2015').hide();
+
+	        		//hide mei
+	        		$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+	        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+	        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+	        		$('.show-all-filter-mei-2015').hide();
+
+	        		// hide juni
+	        		$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+	        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+	        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+	        		$('.show-all-filter-juni-2015').hide();
+
+	        		// hide juli
+	        		$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+	        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+	        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+	        		$('.show-all-filter-juli-2015').hide();
+
+	        		// hide agustus
+	        		$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+	        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+	        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+	        		$('.show-all-filter-agustus-2015').hide();
+
+	        		// hide september
+	        		$('.show-komik-or-nonkomik-filter-september-2015').hide();
+	        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+	        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+	        		$('.show-all-filter-september-2015').hide();
+
+	        		// hide oktober
+	        		$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+	        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+	        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+	        		$('.show-all-filter-oktober-2015').hide();
+
+	        		// hide november
+	        		$('.show-komik-or-nonkomik-filter-november-2015').hide();
+	        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+	        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+	        		$('.show-all-filter-november-2015').hide();
+
+	        		// show desember
+	        		$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+	        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+	        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+	        		$('.show-all-filter-desember-2015').show();
 			    }
 			});
 
@@ -1665,7 +2666,729 @@ var Site = {
 		        		$('.show-all-filter-januari-2015').show();
 	        		}
         		}
+        		else if(dropdownValue == "februari"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-februari-2015').hide();
+		        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.clone-filter-result-februari-2015');
+						$('.show-komik-or-nonkomik-filter-februari-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-februari-2015').hide();
+		        		$('.filter-komik-februari-2015-to-clone').appendTo('.clone-filter-result-februari-2015');
+						$('.show-komik-or-nonkomik-filter-februari-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-februari-2015').hide();
+		        		$('.filter-komik-februari-2015-to-clone').appendTo('.filter-komik-februari-2015-to-clone__container');
+		        		$('.filter-nonkomik-februari-2015-to-clone').appendTo('.filter-nonkomik-februari-2015-to-clone__container');
+		        		$('.show-all-filter-februari-2015').show();
+	        		}
+        		}
+        		else if(dropdownValue == "maret"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-maret-2015').hide();
+		        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.clone-filter-result-maret-2015');
+						$('.show-komik-or-nonkomik-filter-maret-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-maret-2015').hide();
+		        		$('.filter-komik-maret-2015-to-clone').appendTo('.clone-filter-result-maret-2015');
+						$('.show-komik-or-nonkomik-filter-maret-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-maret-2015').hide();
+		        		$('.filter-komik-maret-2015-to-clone').appendTo('.filter-komik-maret-2015-to-clone__container');
+		        		$('.filter-nonkomik-maret-2015-to-clone').appendTo('.filter-nonkomik-maret-2015-to-clone__container');
+		        		$('.show-all-filter-maret-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "april"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-april-2015').hide();
+		        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.clone-filter-result-april-2015');
+						$('.show-komik-or-nonkomik-filter-april-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-april-2015').hide();
+		        		$('.filter-komik-april-2015-to-clone').appendTo('.clone-filter-result-april-2015');
+						$('.show-komik-or-nonkomik-filter-april-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-april-2015').hide();
+		        		$('.filter-komik-april-2015-to-clone').appendTo('.filter-komik-april-2015-to-clone__container');
+		        		$('.filter-nonkomik-april-2015-to-clone').appendTo('.filter-nonkomik-april-2015-to-clone__container');
+		        		$('.show-all-filter-april-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "mei"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-mei-2015').hide();
+		        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.clone-filter-result-mei-2015');
+						$('.show-komik-or-nonkomik-filter-mei-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-mei-2015').hide();
+		        		$('.filter-komik-mei-2015-to-clone').appendTo('.clone-filter-result-mei-2015');
+						$('.show-komik-or-nonkomik-filter-mei-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-mei-2015').hide();
+		        		$('.filter-komik-mei-2015-to-clone').appendTo('.filter-komik-mei-2015-to-clone__container');
+		        		$('.filter-nonkomik-mei-2015-to-clone').appendTo('.filter-nonkomik-mei-2015-to-clone__container');
+		        		$('.show-all-filter-mei-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "juni"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-juni-2015').hide();
+		        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.clone-filter-result-juni-2015');
+						$('.show-komik-or-nonkomik-filter-juni-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-juni-2015').hide();
+		        		$('.filter-komik-juni-2015-to-clone').appendTo('.clone-filter-result-juni-2015');
+						$('.show-komik-or-nonkomik-filter-juni-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-juni-2015').hide();
+		        		$('.filter-komik-juni-2015-to-clone').appendTo('.filter-komik-juni-2015-to-clone__container');
+		        		$('.filter-nonkomik-juni-2015-to-clone').appendTo('.filter-nonkomik-juni-2015-to-clone__container');
+		        		$('.show-all-filter-juni-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "juli"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-juli-2015').hide();
+		        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.clone-filter-result-juli-2015');
+						$('.show-komik-or-nonkomik-filter-juli-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-juli-2015').hide();
+		        		$('.filter-komik-juli-2015-to-clone').appendTo('.clone-filter-result-juli-2015');
+						$('.show-komik-or-nonkomik-filter-juli-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-juli-2015').hide();
+		        		$('.filter-komik-juli-2015-to-clone').appendTo('.filter-komik-juli-2015-to-clone__container');
+		        		$('.filter-nonkomik-juli-2015-to-clone').appendTo('.filter-nonkomik-juli-2015-to-clone__container');
+		        		$('.show-all-filter-juli-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "agustus"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-agustus-2015').hide();
+		        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.clone-filter-result-agustus-2015');
+						$('.show-komik-or-nonkomik-filter-agustus-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-agustus-2015').hide();
+		        		$('.filter-komik-agustus-2015-to-clone').appendTo('.clone-filter-result-agustus-2015');
+						$('.show-komik-or-nonkomik-filter-agustus-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-agustus-2015').hide();
+		        		$('.filter-komik-agustus-2015-to-clone').appendTo('.filter-komik-agustus-2015-to-clone__container');
+		        		$('.filter-nonkomik-agustus-2015-to-clone').appendTo('.filter-nonkomik-agustus-2015-to-clone__container');
+		        		$('.show-all-filter-agustus-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "september"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-september-2015').hide();
+		        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.clone-filter-result-september-2015');
+						$('.show-komik-or-nonkomik-filter-september-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-september-2015').hide();
+		        		$('.filter-komik-september-2015-to-clone').appendTo('.clone-filter-result-september-2015');
+						$('.show-komik-or-nonkomik-filter-september-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-september-2015').hide();
+		        		$('.filter-komik-september-2015-to-clone').appendTo('.filter-komik-september-2015-to-clone__container');
+		        		$('.filter-nonkomik-september-2015-to-clone').appendTo('.filter-nonkomik-september-2015-to-clone__container');
+		        		$('.show-all-filter-september-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "oktober"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-oktober-2015').hide();
+		        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.clone-filter-result-oktober-2015');
+						$('.show-komik-or-nonkomik-filter-oktober-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-oktober-2015').hide();
+		        		$('.filter-komik-oktober-2015-to-clone').appendTo('.clone-filter-result-oktober-2015');
+						$('.show-komik-or-nonkomik-filter-oktober-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-oktober-2015').hide();
+		        		$('.filter-komik-oktober-2015-to-clone').appendTo('.filter-komik-oktober-2015-to-clone__container');
+		        		$('.filter-nonkomik-oktober-2015-to-clone').appendTo('.filter-nonkomik-oktober-2015-to-clone__container');
+		        		$('.show-all-filter-oktober-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "november"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-november-2015').hide();
+		        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.clone-filter-result-november-2015');
+						$('.show-komik-or-nonkomik-filter-november-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-november-2015').hide();
+		        		$('.filter-komik-november-2015-to-clone').appendTo('.clone-filter-result-november-2015');
+						$('.show-komik-or-nonkomik-filter-november-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-november-2015').hide();
+		        		$('.filter-komik-november-2015-to-clone').appendTo('.filter-komik-november-2015-to-clone__container');
+		        		$('.filter-nonkomik-november-2015-to-clone').appendTo('.filter-nonkomik-november-2015-to-clone__container');
+		        		$('.show-all-filter-november-2015').show();
+	        		}
+	        	}
+	        	else if(dropdownValue == "desember"){
+        			if(!($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-nonkomik').prop('disabled', true);
+
+		        		$('.show-all-filter-desember-2015').hide();
+		        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.clone-filter-result-desember-2015');
+						$('.show-komik-or-nonkomik-filter-desember-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && !($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', true);
+
+		        		$('.show-all-filter-desember-2015').hide();
+		        		$('.filter-komik-desember-2015-to-clone').appendTo('.clone-filter-result-desember-2015');
+						$('.show-komik-or-nonkomik-filter-desember-2015').show();
+	        		}
+
+	        		if(($('.input-komik').is(':checked')) && ($('.input-nonkomik').is(':checked'))) {
+	        			$('.input-komik').prop('disabled', false);
+	        			$('.input-nonkomik').prop('disabled', false);
+
+						$('.show-komik-or-nonkomik-filter-desember-2015').hide();
+		        		$('.filter-komik-desember-2015-to-clone').appendTo('.filter-komik-desember-2015-to-clone__container');
+		        		$('.filter-nonkomik-desember-2015-to-clone').appendTo('.filter-nonkomik-desember-2015-to-clone__container');
+		        		$('.show-all-filter-desember-2015').show();
+	        		}
+	        	}
         	});
+        }
+	},
+
+	//fungsi untuk di halaman transaksi-pitimoss.html
+	showMoreInfoTransaksiPitimossPage: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html"){
+        	// fungsi collapsible item *show/hide* dari pengembalian buku pitimoss 2015 @ transaksi-pitimoss.html
+			$('a.hide-show-info-tepat-waktu-vs-terlambat').click(function(event){
+				event.stopPropagation();
+				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-up").addClass("fa-angle-down");
+	                $(this).parents("div.grid-center").find("div.info-content-tepat-waktu-vs-terlambat").slideUp();
+	            }
+	            else if($(this).children("i.arrow-changeable").hasClass("fa-angle-down")){
+	                $(this).find("i.arrow-changeable").removeClass("fa-angle-down").addClass("fa-angle-up");
+	                $(this).parents("div.grid-center").find("div.info-content-tepat-waktu-vs-terlambat").slideDown();
+	            }
+			});
+        }
+	},
+
+	createChartOfPengembalianBukuVer1: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html"){
+        	/* TERLAMBAT + TEPAT WAKTU - BATANG */
+        	var tepatWaktu = [
+				[1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+		    var terlambat = [
+		    	[1420045200000, 4710], 
+		    	[1422723600000, 3497], 
+		    	[1425142800000, 3913], 
+		    	[1427821200000, 3634], 
+		    	[1430413200000, 3629],
+		    	[1433091600000, 4025],
+				[1435683600000, 2420],
+				[1438362000000, 3875],
+				[1441040400000, 2995],
+				[1443632400000, 3112],
+				[1446310800000, 3166],
+				[1448902800000, 3756]
+		    	];
+		    
+		    var data = [
+		        { label: "Tepat waktu", data: tepatWaktu },
+		        { label: "Terlambat", data: terlambat }
+		    ];
+		 
+		    $.plot($("#pengembalian-buku-chart-1"), data, {
+		        series: {
+		            bars: {
+		                show: true,
+		                barWidth: 14*23*80*80*350,
+		                lineWidth: 0,
+		                order: 1,
+		                fillColor: {
+		                    colors: [{
+		                        opacity: 1
+		                    }, {
+		                        opacity: 1
+		                    }]
+		                }
+		            }
+		        },
+		        xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: true,
+		            axisLabelPadding: 1,
+		        },
+		        yaxis: {
+		            axisLabel: 'Value',
+		            axisLabelUseCanvas: true,
+		        },
+		        grid: {
+		            hoverable: true,
+		            borderWidth: 0
+		        },
+		        legend: {
+		            backgroundColor: "#EEE",
+		            labelBoxBorderColor: "none"
+		        },
+		        tooltip: {
+		        	show: true
+		        },
+		        colors: ["#89cf89", "#df5842"]
+		    });
+
+			/* TEPAT WAKTU - BATANG */
+			var tepatWaktu = [
+				[1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+		    var data = [
+		        { label: "Tepat waktu", data: tepatWaktu, color: "#89cf89" }
+		    ];
+
+		    var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    barWidth:  60*60*24*1000*8
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                fillColor: "#89cf89",
+	            },
+	            xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: false,
+		        },
+	            yaxis: {
+	            	tickSize: 2000,
+	            },
+	            legend: {
+	                show: true,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip:{
+	            	show: true
+	            }
+	        };
+
+	        $.plot($("#pengembalian-buku-chart-1-tepat-waktu"), data, options);
+
+			/* TERLAMBAT - BATANG */
+			var terlambat = [
+				[1420045200000, 4710], 
+		    	[1422723600000, 3497], 
+		    	[1425142800000, 3913], 
+		    	[1427821200000, 3634], 
+		    	[1430413200000, 3629],
+		    	[1433091600000, 4025],
+				[1435683600000, 2420],
+				[1438362000000, 3875],
+				[1441040400000, 2995],
+				[1443632400000, 3112],
+				[1446310800000, 3166],
+				[1448902800000, 3756]
+			];
+		    var data = [
+		        { label: "Terlambat", data: terlambat, color: "#df5842" }
+		    ];
+
+		    var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    barWidth: 60*60*24*1000*8
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                fillColor: "#df5842",
+	            },
+	            xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: false,
+		        },
+	            yaxis: {
+	            	tickSize: 2000,
+	            	max: 10000
+	            },
+	            legend: {
+	                show: true,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip:{
+	            	show: true
+	            }
+	        };
+
+	        $.plot($("#pengembalian-buku-chart-1-terlambat"), data, options);
+        }
+	},
+
+	createChartOfPengembalianBukuVer2: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html"){
+        	/* TERLAMBAT + TEPAT WAKTU - BATANG & GARIS */
+
+			/* TEPAT WAKTU - BATANG & GARIS */
+
+			/* TERLAMBAT - BATANG & GARIS */
+
+			/* TERLAMBAT + TEPAT WAKTU - GARIS */
+
+			/* TEPAT WAKTU - GARIS */
+
+			/* TERLAMBAT - GARIS */
+
+			/* TERLAMBAT + TEPAT WAKTU - BATANG */
+        	var tepatWaktu = [
+				[1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+		    var terlambat = [
+		    	[1420045200000, 4710], 
+		    	[1422723600000, 3497], 
+		    	[1425142800000, 3913], 
+		    	[1427821200000, 3634], 
+		    	[1430413200000, 3629],
+		    	[1433091600000, 4025],
+				[1435683600000, 2420],
+				[1438362000000, 3875],
+				[1441040400000, 2995],
+				[1443632400000, 3112],
+				[1446310800000, 3166],
+				[1448902800000, 3756]
+		    	];
+		    
+		    var data = [
+		        { label: "Tepat waktu", data: tepatWaktu },
+		        { label: "Terlambat", data: terlambat }
+		    ];
+		 
+		    $.plot($("#pengembalian-buku-chart-2-batang"), data, {
+		        series: {
+		            bars: {
+		                show: true,
+		                barWidth: 14*23*80*80*350,
+		                lineWidth: 0,
+		                order: 1,
+		                fillColor: {
+		                    colors: [{
+		                        opacity: 1
+		                    }, {
+		                        opacity: 1
+		                    }]
+		                }
+		            }
+		        },
+		        xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: true,
+		            axisLabelPadding: 1,
+		        },
+		        yaxis: {
+		            axisLabel: 'Value',
+		            axisLabelUseCanvas: true,
+		        },
+		        grid: {
+		            hoverable: true,
+		            borderWidth: 0
+		        },
+		        legend: {
+		            backgroundColor: "#EEE",
+		            labelBoxBorderColor: "none"
+		        },
+		        tooltip: {
+		        	show: true
+		        },
+		        colors: ["#89cf89", "#df5842"]
+		    });
+
+			/* TEPAT WAKTU - BATANG */
+			var tepatWaktu = [
+				[1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+		    var data = [
+		        { label: "Tepat waktu", data: tepatWaktu, color: "#89cf89" }
+		    ];
+
+		    var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    barWidth:  60*60*24*1000*8
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                fillColor: "#89cf89",
+	            },
+	            xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: false,
+		        },
+	            yaxis: {
+	            	tickSize: 2000,
+	            },
+	            legend: {
+	                show: true,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip:{
+	            	show: true
+	            }
+	        };
+
+	        $.plot($("#pengembalian-buku-chart-2-tepat-waktu"), data, options);
+
+			/* TERLAMBAT - BATANG */
+			var terlambat = [
+				[1420045200000, 4710], 
+		    	[1422723600000, 3497], 
+		    	[1425142800000, 3913], 
+		    	[1427821200000, 3634], 
+		    	[1430413200000, 3629],
+		    	[1433091600000, 4025],
+				[1435683600000, 2420],
+				[1438362000000, 3875],
+				[1441040400000, 2995],
+				[1443632400000, 3112],
+				[1446310800000, 3166],
+				[1448902800000, 3756]
+			];
+		    var data = [
+		        { label: "Terlambat", data: terlambat, color: "#df5842" }
+		    ];
+
+		    var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    barWidth: 60*60*24*1000*8
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                fillColor: "#df5842",
+	            },
+	            xaxis: {
+		            mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: false,
+		        },
+	            yaxis: {
+	            	tickSize: 2000,
+	            	max: 10000
+	            },
+	            legend: {
+	                show: true,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip:{
+	            	show: true
+	            }
+	        };
+
+	        $.plot($("#pengembalian-buku-chart-2-terlambat"), data, options);
         }
 	}
 }
