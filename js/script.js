@@ -3576,7 +3576,8 @@ var Site = {
 		        },
 	            yaxis: {
 	            	tickSize: 2000,
-	            	max: 10000
+	            	max: 10000,
+	            	min: 0
 	            },
 	            legend: {
 	                show: true,
@@ -3834,32 +3835,208 @@ var Site = {
 
         	$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('checked', true);
         	$('.input-pengembalian-buku-chart-2-terlambat').prop('checked', true);
-        	$('.input-pengembalian-buku-chart-2-batang-garis').prop('checked', true);
+        	$('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', true);
+        	$('.input-pengembalian-buku-chart-2-batang').prop('checked', true);
 
         	$('form.filter-update-2').change(function () {
+        		var radioValue = $('input[name=jenisgrafik]:checked').val();
+
         		if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+        			$('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', true);
 					$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('disabled', false);
 					$('.input-pengembalian-buku-chart-2-terlambat').prop('disabled', false);
+        			if(radioValue=="batanggaris"){
+        				$('.input-pengembalian-buku-chart-2-batang').prop('checked', true);
 
-	        		$('#pengembalian-buku-chart-2').show();
-					$('#pengembalian-buku-chart-2-tepat-waktu').hide();
-					$('#pengembalian-buku-chart-2-terlambat').hide();
+        				$('#pengembalian-buku-chart-2-batang').show();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="batang"){
+	        			$('#pengembalian-buku-chart-2-batang').show();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="garis"){
+	        			$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
 				}
 				if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', false);
+					if(radioValue=="batanggaris"){
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="batang"){
+	        			$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="garis"){
+	        			$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').show();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
 					$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('disabled', true);
-
-	        		$('#pengembalian-buku-chart-2').hide();
-					$('#pengembalian-buku-chart-2-tepat-waktu').show();
-					$('#pengembalian-buku-chart-2-terlambat').hide();
 				}
 				if(!($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', false);
+					if(radioValue=="batanggaris"){
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').show();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="batang"){
+	        			$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').show();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+	        		}
+	        		else if(radioValue=="garis"){
+	        			$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').show();
+	        		}
 					$('.input-pengembalian-buku-chart-2-terlambat').prop('disabled', true);
-
-	        		$('#pengembalian-buku-chart-2').hide();
-					$('#pengembalian-buku-chart-2-tepat-waktu').hide();
-					$('#pengembalian-buku-chart-2-terlambat').show();
 				}
         	});
+
+			$('form.filter-update-2-radio').change(function () {
+				var radioValue = $('input[name=jenisgrafik]:checked').val();
+				if(radioValue == "batanggaris"){
+					if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+					if(!($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').show();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+				}
+				else if(radioValue == "batang"){
+					if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').show();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+					if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+					if(!($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').show();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+				}
+				else if(radioValue == "garis"){
+					if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').show();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+					if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').show();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+					}
+					if(!($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+						$('#pengembalian-buku-chart-2-batang').hide();
+						$('#pengembalian-buku-chart-2-garis').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+						$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+						$('#pengembalian-buku-chart-2-terlambat').hide();
+						$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+						$('#pengembalian-buku-chart-2-terlambat-garis').show();
+					}					
+				}
+			});
         }
 	},
 }
