@@ -34,6 +34,7 @@ var Site = {
 		Site.createChartOfPengembalianBukuVer2(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang, hanya grafik garis, grafik garis + batang) @ transaksi-pitimoss.html
 		Site.filterPengembalianBukuChart1();
 		Site.filterPengembalianBukuChart2();
+		Site.createChartRataRataWaktuPeminjaman();
 
 	},
 
@@ -1400,8 +1401,14 @@ var Site = {
 	                labelMargin: 13,
 	            },
 	            tooltip: {
-	            	show: true
-	            }
+					show: true,
+					content: "%y: %x buah",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#jumlah-buku-chart"), dataSet, options);
@@ -3081,7 +3088,13 @@ var Site = {
 		            labelBoxBorderColor: "none"
 		        },
 		        tooltip: {
-					show: true
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
 				},
 		        colors: ["#89cf89", "#df5842"]
 		    });
@@ -3148,7 +3161,7 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: '<div style="background-color: rgba(255,255,255,0.75); border: 1px solid #000; padding: .25em"><h4 style>%s</h4><ul><li>X is %x</li><li>Y is %y</li></ul></div>',
+					content: "%y buku",
 					shifts: {
 						x: 10,
 						y: 20
@@ -3220,9 +3233,15 @@ var Site = {
 	                hoverable: true,
 	                borderWidth: 0
 	            },
-	            tooltip:{
-	            	show: true
-	            }
+	            tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#pengembalian-buku-chart-1-terlambat"), data, options);
@@ -3321,8 +3340,14 @@ var Site = {
 			        borderWidth: 0
 			    },
 			    tooltip: {
-			    	show: true
-			    }
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 			};
 			$.plot($("#pengembalian-buku-chart-2-tepat-waktu"), datasetBG, optionsBG);
 
@@ -3411,8 +3436,14 @@ var Site = {
 			        borderWidth: 0
 			    },
 			    tooltip: {
-			    	show: true
-			    }
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 			};
 			$.plot($("#pengembalian-buku-chart-2-terlambat"), datasetBG, optionsBG);
 
@@ -3520,11 +3551,15 @@ var Site = {
                 	},
                 	borderWidth: 1*/
                 },
-                /*tooltip: {
-                    show: true,
-                    content: "<div class='visitor__tooltip'>%x<br><span class='visitor__tooltip--larger'>%y buku</span></div>",
-                    defaultTheme: false
-                },*/
+                tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
                 legend: {
                     show: true,
                     /*labelFormatter: function(label, series) {
@@ -3602,7 +3637,16 @@ var Site = {
 	            grid: {
 	                hoverable: true,
 	                borderWidth: 0
-	            }
+	            },
+	            tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#pengembalian-buku-chart-2-tepat-waktu-garis"), data, options);
@@ -3675,7 +3719,16 @@ var Site = {
 	            grid: {
 	                hoverable: true,
 	                borderWidth: 0
-	            }
+	            },
+	            tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 	        $.plot($("#pengembalian-buku-chart-2-terlambat-garis"), data, options);
 
@@ -3764,8 +3817,14 @@ var Site = {
 		            labelBoxBorderColor: "none"
 		        },
 		        tooltip: {
-		        	show: true
-		        },
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 		        colors: ["#89cf89", "#df5842"]
 		    });
 
@@ -3829,9 +3888,15 @@ var Site = {
 	                hoverable: true,
 	                borderWidth: 0
 	            },
-	            tooltip:{
-	            	show: true
-	            }
+	            tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#pengembalian-buku-chart-2-tepat-waktu-batang"), data222, options);
@@ -3897,9 +3962,15 @@ var Site = {
 	                hoverable: true,
 	                borderWidth: 0
 	            },
-	            tooltip:{
-	            	show: true
-	            }
+	            tooltip: {
+					show: true,
+					content: "%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
 	        };
 
 	        $.plot($("#pengembalian-buku-chart-2-terlambat-batang"), dat2a, options2);
@@ -4164,5 +4235,88 @@ var Site = {
 				}
 			});
         }
+	},
+
+	createChartRataRataWaktuPeminjaman: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html"){
+			var data = [
+				[0, 1349],
+				[1, 68472],
+				[2, 18449],
+				[3, 26028],
+				[4, 1858],
+				[5, 617],
+				[6, 213],
+				[7, 15906],
+				[8, 0],
+				[9, 22],
+				[10, 65],
+				[11, 0],
+				[12, 0],
+				[13, 0],
+				[14, 194],
+			];
+	        var dataset = [{ label: "2012 Average Temperature", data: data, color: "#89cf89" }];
+	 		
+
+	        var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    lineWidth: 0,
+	                    fill: "#89cf89",
+	        			fillColor: "#89cf89"
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                barWidth: 0.4,
+	                fillColor: "#89cf89",
+
+	            },
+	            xaxis: {
+	                tickSize: 1,
+	                axisLabelUseCanvas: false,
+	                axisLabelFontSizePixels: 12,
+	                tickLength: 0,
+	                font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
+	            },
+	            yaxis: {
+	            	tickSize: 5000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
+	            },
+	            legend: {
+	                show: false,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip: {
+					show: true,
+					content: "%x hari:<br>%y buku",
+					shifts: {
+						x: 10,
+						y: 20
+					},
+					defaultTheme: false
+				},
+	        };
+
+	        $.plot($("#rata-rata-waktu-peminjaman-chart"), dataset, options);
+		}
 	},
 }

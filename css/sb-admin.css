@@ -591,3 +591,36 @@ a.toggle-info:focus {
     width: 700px;
     height: 300px;   
 }
+
+/*.flotTip{
+    padding: 0 !important;
+    border: 0 !important;
+}*/
+
+.flotTip {
+  font-size: 13px !important;
+  color: #fff;
+  padding: 12px !important;
+  background: #444 !important;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-background-clip: padding-box;
+  /* Safari */
+  background-clip: padding-box; 
+  border: 0 !important;
+}
+
+.flotTip:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #444;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent; }
