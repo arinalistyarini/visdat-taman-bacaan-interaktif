@@ -3192,10 +3192,210 @@ var Site = {
         	/* TERLAMBAT + TEPAT WAKTU - BATANG & GARIS */
 
 			/* TEPAT WAKTU - BATANG & GARIS */
+			var data2 = [
+			    [1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+			//sea level pressure
+			var data3 = [
+			    [1420045200000, 9202], 
+				[1422723600000, 8130],  
+				[1425142800000, 7558], 
+				[1427821200000, 7722], 
+				[1430413200000, 7635],
+				[1433091600000, 9134],
+				[1435683600000, 6011],
+				[1438362000000, 7953],
+				[1441040400000, 6972],
+				[1443632400000, 7678],
+				[1446310800000, 5163],
+				[1448902800000, 7318]
+			];
+			var datasetBG = [
+			    {
+			        label: "Sea Level Pressure",
+			        data: data3,         
+			        color: "#756600",
+			        bars: {
+			            show: true, 
+			            align: "center",
+			            barWidth: 24 * 60 * 60 * 600,
+			            lineWidth:1
+			        }
+			    }, {
+			        label: "Wind Speed",
+			        data: data2,
+			        color: "#0062FF",
+			        points: { symbol: "circle", fillColor: "#0062FF", show: true },
+			        lines: {show:true}
+			    }
+			];  
+			var optionsBG = {
+			    xaxis: {
+			        mode: "time",
+			        tickSize: [1, "month"],        
+			        tickLength: 0,
+			        axisLabel: "Date",
+			        axisLabelUseCanvas: true,
+			        axisLabelFontSizePixels: 12,
+			        axisLabelFontFamily: 'Verdana, Arial',
+			        axisLabelPadding: 10,
+			        color: "black"
+			    },
+			    yaxes: [{
+			            position: "left",
+			            max: 10000,
+			            tickSize: 2000,
+			            color: "black",
+			            axisLabel: "Sea Level Pressure (hPa)",
+			            axisLabelUseCanvas: true,
+			            axisLabelFontSizePixels: 12,
+			            axisLabelFontFamily: 'Verdana, Arial',
+			            axisLabelPadding: 3            
+			        }
+			    ],
+			    legend: {
+			        show: true       
+			    },
+			    grid: {
+			        hoverable: true,
+			        borderWidth: 3,        
+			        backgroundColor: { colors: ["#ffffff", "#EDF5FF"] }
+			    }
+			};
+
+			$.plot($("#pengembalian-buku-chart-2-tepat-waktu"), datasetBG, optionsBG);
 
 			/* TERLAMBAT - BATANG & GARIS */
 
 			/* TERLAMBAT + TEPAT WAKTU - GARIS */
+			var datasss = [
+        		{
+	                data: [
+            			[1420045200000, 9202], 
+						[1422723600000, 8130],  
+						[1425142800000, 7558], 
+						[1427821200000, 7722], 
+						[1430413200000, 7635],
+						[1433091600000, 9134],
+						[1435683600000, 6011],
+						[1438362000000, 7953],
+						[1441040400000, 6972],
+						[1443632400000, 7678],
+						[1446310800000, 5163],
+						[1448902800000, 7318]
+	                ],
+	                label: "Tepat Waktu",
+	                color: "#89cf89",
+	                lines: {
+	                	show: true,
+	                	fill: false,
+	                	lineWidth: 5
+	                },
+	                points: {
+				        show: true,
+				        fillColor: '#89cf89',
+				        radius: 5
+				    },
+				    shadowSize: 0
+            	},
+            	{
+	                data: [
+            			[1420045200000, 4710], 
+				    	[1422723600000, 3497], 
+				    	[1425142800000, 3913], 
+				    	[1427821200000, 3634], 
+				    	[1430413200000, 3629],
+				    	[1433091600000, 4025],
+						[1435683600000, 2420],
+						[1438362000000, 3875],
+						[1441040400000, 2995],
+						[1443632400000, 3112],
+						[1446310800000, 3166],
+						[1448902800000, 3756]
+	                ],
+	                label: "Terlambat",
+	                color: "#df5842",
+	                lines: {
+	                	show: true,
+	                	fill: false,
+	                	lineWidth: 5
+	                },
+	                points: {
+				        show: true,
+				        fillColor: '#df5842',
+				        radius: 5
+				    },
+				    shadowSize: 0
+            	}
+            ];
+        	$.plot("#pengembalian-buku-chart-2-garis", datasss, {
+                xaxis: {
+                	tickColor: "transparent",
+                	/*font: {
+						weight:"normal",
+						family:"'Montserrat', sans-serif",
+						color: "#1a1a1a"
+					}*/
+
+					mode: "time",
+		            min: 1418808400000,
+		            max: 1450112400000,
+		            tickLength: 0,
+		            tickSize: [1, "month"],
+		            axisLabelUseCanvas: true,
+		            axisLabelPadding: 1,
+                },
+                yaxis: {
+			        min: 0,
+			        max: 10000,
+			        tickSize: 2000,
+			        /*font: {
+						size:14,
+						weight:"normal",
+						family:"'Montserrat', sans-serif",
+						color: "#1a1a1a"
+					}*/
+			    },
+                grid: {
+                	show: true,
+                	hoverable: true,
+                	borderWidth: 0
+                	/*clickable: false,
+                	labelMargin: 20,
+                	aboveData: true,
+                	borderColor: {
+                		top: "#ccc",
+                		bottom: "#0092a7",
+                		left: "transparent",
+                		right: "transparent"
+                	},
+                	borderWidth: 1*/
+                },
+                tooltip: {
+                    show: true,
+                    /*content: "<div class='visitor__tooltip'>%x<br><span class='visitor__tooltip--larger'>%y buku</span></div>",
+                    defaultTheme: false*/
+                },
+                legend: {
+                    show: true,
+                    /*labelFormatter: function(label, series) {
+                        return "<span class='legend--formatter-ap'>" + label + "</span>";
+                    },
+                    background: null,
+                    container: $(".chart-ap--domisili-d__legend")*/
+                }
+            });
 
 			/* TEPAT WAKTU - GARIS */
 
@@ -3229,14 +3429,14 @@ var Site = {
 				[1443632400000, 3112],
 				[1446310800000, 3166],
 				[1448902800000, 3756]
-		    	];
+		    ];
 		    
-		    var data = [
+		    var data22 = [
 		        { label: "Tepat waktu", data: tepatWaktu },
 		        { label: "Terlambat", data: terlambat }
 		    ];
 		 
-		    $.plot($("#pengembalian-buku-chart-2-batang"), data, {
+		    $.plot($("#pengembalian-buku-chart-2-batang"), data22, {
 		        series: {
 		            bars: {
 		                show: true,
@@ -3294,7 +3494,7 @@ var Site = {
 				[1446310800000, 5163],
 				[1448902800000, 7318]
 			];
-		    var data = [
+		    var data222 = [
 		        { label: "Tepat waktu", data: tepatWaktu, color: "#89cf89" }
 		    ];
 
@@ -3332,7 +3532,7 @@ var Site = {
 	            }
 	        };
 
-	        $.plot($("#pengembalian-buku-chart-2-tepat-waktu"), data, options);
+	        $.plot($("#pengembalian-buku-chart-2-tepat-waktu-batang"), data222, options);
 
 			/* TERLAMBAT - BATANG */
 			var terlambat = [
@@ -3349,11 +3549,11 @@ var Site = {
 				[1446310800000, 3166],
 				[1448902800000, 3756]
 			];
-		    var data = [
+		    var dat2a = [
 		        { label: "Terlambat", data: terlambat, color: "#df5842" }
 		    ];
 
-		    var options = {
+		    var options2 = {
 	            series: {
 	                bars: {
 	                    show: true,
@@ -3388,7 +3588,7 @@ var Site = {
 	            }
 	        };
 
-	        $.plot($("#pengembalian-buku-chart-2-terlambat"), data, options);
+	        $.plot($("#pengembalian-buku-chart-2-terlambat-batang"), dat2a, options2);
         }
 	}
 }
