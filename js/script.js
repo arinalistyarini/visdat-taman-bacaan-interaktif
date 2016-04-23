@@ -32,6 +32,9 @@ var Site = {
 		Site.showMoreInfoTransaksiPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di transaksi-pitimoss.html
 		Site.createChartOfPengembalianBukuVer1(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang) @ transaksi-pitimoss.html
 		Site.createChartOfPengembalianBukuVer2(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang, hanya grafik garis, grafik garis + batang) @ transaksi-pitimoss.html
+		Site.filterPengembalianBukuChart1();
+		Site.filterPengembalianBukuChart2();
+
 	},
 
 	//fungsi untuk di halaman snippet.html
@@ -3262,6 +3265,9 @@ var Site = {
 			    grid: {
 			        hoverable: true,
 			        borderWidth: 0
+			    },
+			    tooltip: {
+			    	show: true
 			    }
 			};
 			$.plot($("#pengembalian-buku-chart-2-tepat-waktu"), datasetBG, optionsBG);
@@ -3337,6 +3343,9 @@ var Site = {
 			    grid: {
 			        hoverable: true,
 			        borderWidth: 0
+			    },
+			    tooltip: {
+			    	show: true
 			    }
 			};
 			$.plot($("#pengembalian-buku-chart-2-terlambat"), datasetBG, optionsBG);
@@ -3768,5 +3777,89 @@ var Site = {
 
 	        $.plot($("#pengembalian-buku-chart-2-terlambat-batang"), dat2a, options2);
         }
-	}
+	},
+
+	filterPengembalianBukuChart1: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html") {
+			$('#pengembalian-buku-chart-1').show();
+			$('#pengembalian-buku-chart-1-tepat-waktu').hide();
+			$('#pengembalian-buku-chart-1-terlambat').hide();
+
+        	$('.input-pengembalian-buku-chart-1-tepat-waktu').prop('checked', true);
+        	$('.input-pengembalian-buku-chart-1-terlambat').prop('checked', true);
+
+        	$('form.filter-update-1').change(function () {
+        		if($('.input-pengembalian-buku-chart-1-tepat-waktu').is(':checked') && ($('.input-pengembalian-buku-chart-1-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-1-tepat-waktu').prop('disabled', false);
+					$('.input-pengembalian-buku-chart-1-terlambat').prop('disabled', false);
+
+	        		$('#pengembalian-buku-chart-1').show();
+					$('#pengembalian-buku-chart-1-tepat-waktu').hide();
+					$('#pengembalian-buku-chart-1-terlambat').hide();
+				}
+				if($('.input-pengembalian-buku-chart-1-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-1-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-1-tepat-waktu').prop('disabled', true);
+
+	        		$('#pengembalian-buku-chart-1').hide();
+					$('#pengembalian-buku-chart-1-tepat-waktu').show();
+					$('#pengembalian-buku-chart-1-terlambat').hide();
+				}
+				if(!($('.input-pengembalian-buku-chart-1-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-1-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-1-terlambat').prop('disabled', true);
+
+	        		$('#pengembalian-buku-chart-1').hide();
+					$('#pengembalian-buku-chart-1-tepat-waktu').hide();
+					$('#pengembalian-buku-chart-1-terlambat').show();
+				}
+        	});
+        }
+	},
+
+	filterPengembalianBukuChart2: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.html") {
+			$('#pengembalian-buku-chart-2-batang').show();
+			$('#pengembalian-buku-chart-2-garis').hide();
+			$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+			$('#pengembalian-buku-chart-2-tepat-waktu-batang').hide();
+			$('#pengembalian-buku-chart-2-tepat-waktu-garis').hide();
+			$('#pengembalian-buku-chart-2-terlambat').hide();
+			$('#pengembalian-buku-chart-2-terlambat-batang').hide();
+			$('#pengembalian-buku-chart-2-terlambat-garis').hide();
+
+        	$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('checked', true);
+        	$('.input-pengembalian-buku-chart-2-terlambat').prop('checked', true);
+        	$('.input-pengembalian-buku-chart-2-batang-garis').prop('checked', true);
+
+        	$('form.filter-update-2').change(function () {
+        		if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('disabled', false);
+					$('.input-pengembalian-buku-chart-2-terlambat').prop('disabled', false);
+
+	        		$('#pengembalian-buku-chart-2').show();
+					$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+					$('#pengembalian-buku-chart-2-terlambat').hide();
+				}
+				if($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked') && !($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('disabled', true);
+
+	        		$('#pengembalian-buku-chart-2').hide();
+					$('#pengembalian-buku-chart-2-tepat-waktu').show();
+					$('#pengembalian-buku-chart-2-terlambat').hide();
+				}
+				if(!($('.input-pengembalian-buku-chart-2-tepat-waktu').is(':checked')) && ($('.input-pengembalian-buku-chart-2-terlambat').is(':checked'))) {
+					$('.input-pengembalian-buku-chart-2-terlambat').prop('disabled', true);
+
+	        		$('#pengembalian-buku-chart-2').hide();
+					$('#pengembalian-buku-chart-2-tepat-waktu').hide();
+					$('#pengembalian-buku-chart-2-terlambat').show();
+				}
+        	});
+        }
+	},
 }
