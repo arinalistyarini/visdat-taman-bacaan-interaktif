@@ -23,16 +23,16 @@ var Site = {
 		Site.createStackedChartFiltTerlambatOnlyGrs(); // create stacked bar chart yang terlambat saja @ div#bar-chart-filt-grs snippet-filtering.html
 		Site.filterTerlambatTepatWaktuChecklistGrs(); //filtering terlambat tepat waktu checklist @ snippet-filtering-grs.html
 
-		//fungsi untuk di halaman buku-pitimoss.html
-		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ buku-pitimoss.html
-		Site.showMoreInfoBukuPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di buku-pitimoss.html
-		Site.filterKomikOrNonKomik(); // filter komik, nonkomik, or all @ buku-pitimoss.html
+		//fungsi untuk di halaman buku-pitimoss.php
+		Site.createJumlahBukuChart(); // chart untuk jenis buku yang ada di pitimoss @ buku-pitimoss.php
+		Site.showMoreInfoBukuPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di buku-pitimoss.php
+		Site.filterKomikOrNonKomik(); // filter komik, nonkomik, or all @ buku-pitimoss.php
 
-		//fungsi untuk di halaman transaksi-pitimoss.html
-		Site.showMoreInfoTransaksiPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di transaksi-pitimoss.html
-		Site.createChartOfPengembalianBukuVer1(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang) @ transaksi-pitimoss.html
-		Site.createChartOfPengembalianBukuVer2(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang, hanya grafik garis, grafik garis + batang) @ transaksi-pitimoss.html
-		Site.filterPengembalianBukuChart1();
+		//fungsi untuk di halaman transaksi-pitimoss.php
+		Site.showMoreInfoTransaksiPitimossPage(); // fungsi collapsible item *show/hide* dari bagian2 yang ada di transaksi-pitimoss.php
+		// Site.createChartOfPengembalianBukuVer1(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang) @ transaksi-pitimoss.php
+		Site.createChartOfPengembalianBukuVer2(); // bikin chart pengembalian buku tepat waktu vs terlambat (hanya grafik batang, hanya grafik garis, grafik garis + batang) @ transaksi-pitimoss.php
+		// Site.filterPengembalianBukuChart1();
 		Site.filterPengembalianBukuChart2();
 		Site.createChartRataRataWaktuPeminjaman();
 
@@ -131,13 +131,15 @@ var Site = {
 
 			            var x = item.datapoint[0];
 			            var y = item.datapoint[1];
+			            var text = "<strong>" + item.series.yaxis.ticks[y].label + "</strong><br>" + x + " buah";
+			            console.log("jaja");
 
 			            var color = item.series.color;             
 
 			            showTooltip(item.pageX,
 			            item.pageY,
 			            color,
-			                "<strong>" + item.series.yaxis.ticks[y].label + "</strong><br>" + x + " buah");
+			            text);
 			        }
 			    } else {
 			        $("#tooltip").remove();
@@ -1332,13 +1334,13 @@ var Site = {
         }
 	},
 
-	//fungsi untuk di halaman buku-pitimoss.html
+	//fungsi untuk di halaman buku-pitimoss.php
 	createJumlahBukuChart: function(){
-		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.php
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "buku-pitimoss.html") {
+        if(lastPart == "buku-pitimoss.php") {
         	// dataset
 			var rawData = [
 			    [51725, 6], //Komik kecil
@@ -1405,7 +1407,7 @@ var Site = {
 					content: "%y: %x buah",
 					shifts: {
 						x: 10,
-						y: 20
+						y: -20
 					},
 					defaultTheme: false
 				},
@@ -1416,12 +1418,12 @@ var Site = {
 	},
 
 	showMoreInfoBukuPitimossPage: function(){
-		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.php
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "buku-pitimoss.html"){
-        	// fungsi collapsible item *show/hide* dari jumlah buku pitimoss 2015 @ buku-pitimoss.html
+        if(lastPart == "buku-pitimoss.php"){
+        	// fungsi collapsible item *show/hide* dari jumlah buku pitimoss 2015 @ buku-pitimoss.php
 			$('a.hide-show-info-jumlah-buku').click(function(event){
 				event.stopPropagation();
 				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
@@ -1434,7 +1436,7 @@ var Site = {
 	            }
 			});
 
-			// fungsi collapsible item *show/hide* dari buku pinjaman terlaris pitimoss 2015 @ buku-pitimoss.html
+			// fungsi collapsible item *show/hide* dari buku pinjaman terlaris pitimoss 2015 @ buku-pitimoss.php
 			$('a.hide-show-info-terlaris').click(function(event){
 				event.stopPropagation();
 				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
@@ -1450,11 +1452,11 @@ var Site = {
 	},
 
 	filterKomikOrNonKomik: function(){
-		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.html
+		//check file name, fungsi baru jalan kalo file htmlnya buku-pitimoss.php
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "buku-pitimoss.html"){
+        if(lastPart == "buku-pitimoss.php"){
         	$('.input-komik').prop('checked', true);
         	$('.input-nonkomik').prop('checked', true);
 
@@ -2977,13 +2979,13 @@ var Site = {
         }
 	},
 
-	//fungsi untuk di halaman transaksi-pitimoss.html
+	//fungsi untuk di halaman transaksi-pitimoss.php
 	showMoreInfoTransaksiPitimossPage: function(){
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html"){
-        	// fungsi collapsible item *show/hide* dari pengembalian buku pitimoss 2015 @ transaksi-pitimoss.html
+        if(lastPart == "transaksi-pitimoss.php"){
+        	// fungsi collapsible item *show/hide* dari pengembalian buku pitimoss 2015 @ transaksi-pitimoss.php
 			$('a.hide-show-info-tepat-waktu-vs-terlambat').click(function(event){
 				event.stopPropagation();
 				if($(this).children("i.arrow-changeable").hasClass("fa-angle-up")){
@@ -3002,7 +3004,7 @@ var Site = {
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html"){
+        if(lastPart == "transaksi-pitimoss.php"){
         	/* TERLAMBAT + TEPAT WAKTU - BATANG */
         	var tepatWaktu = [
 				[1420045200000, 9202], 
@@ -3252,7 +3254,7 @@ var Site = {
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html"){
+        if(lastPart == "transaksi-pitimoss.php"){
         	/* TERLAMBAT + TEPAT WAKTU - BATANG & GARIS */
 
 			/* TEPAT WAKTU - BATANG & GARIS */
@@ -3820,8 +3822,8 @@ var Site = {
 					show: true,
 					content: "%y buku",
 					shifts: {
-						x: 10,
-						y: 20
+						x: 22,
+						y: -20
 					},
 					defaultTheme: false
 				},
@@ -3892,8 +3894,8 @@ var Site = {
 					show: true,
 					content: "%y buku",
 					shifts: {
-						x: 10,
-						y: 20
+						x: 15,
+						y: -20
 					},
 					defaultTheme: false
 				},
@@ -3966,8 +3968,8 @@ var Site = {
 					show: true,
 					content: "%y buku",
 					shifts: {
-						x: 10,
-						y: 20
+						x: 15,
+						y: -20
 					},
 					defaultTheme: false
 				},
@@ -3981,7 +3983,7 @@ var Site = {
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html") {
+        if(lastPart == "transaksi-pitimoss.php") {
 			$('#pengembalian-buku-chart-1').show();
 			$('#pengembalian-buku-chart-1-tepat-waktu').hide();
 			$('#pengembalian-buku-chart-1-terlambat').hide();
@@ -4020,7 +4022,7 @@ var Site = {
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html") {
+        if(lastPart == "transaksi-pitimoss.php") {
 			$('#pengembalian-buku-chart-2-batang').show();
 			$('#pengembalian-buku-chart-2-garis').hide();
 			$('#pengembalian-buku-chart-2-tepat-waktu').hide();
@@ -4032,7 +4034,7 @@ var Site = {
 
         	$('.input-pengembalian-buku-chart-2-tepat-waktu').prop('checked', true);
         	$('.input-pengembalian-buku-chart-2-terlambat').prop('checked', true);
-        	$('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', true);
+        	// $('.input-pengembalian-buku-chart-2-batang-garis').prop('disabled', true);
         	$('.input-pengembalian-buku-chart-2-batang').prop('checked', true);
 
         	$('form.filter-update-2').change(function () {
@@ -4241,7 +4243,7 @@ var Site = {
 		var windowLoc = $(location).attr('pathname');
         var splitUrlArray = windowLoc.split('/');
         var lastPart = splitUrlArray.pop();
-        if(lastPart == "transaksi-pitimoss.html"){
+        if(lastPart == "transaksi-pitimoss.php"){
 			var data = [
 				[0, 1349],
 				[1, 68472],
@@ -4299,7 +4301,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: true,
+	                show: false,
 	            },
 	            grid: {
 	                hoverable: true,
@@ -4309,8 +4311,8 @@ var Site = {
 					show: true,
 					content: "%x hari:<br>%y buku",
 					shifts: {
-						x: 10,
-						y: 20
+						x: 17,
+						y: -29
 					},
 					defaultTheme: false
 				},
