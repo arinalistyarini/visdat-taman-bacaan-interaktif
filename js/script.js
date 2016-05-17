@@ -3335,7 +3335,7 @@ var Site = {
 			        }
 			    ],
 			    legend: {
-			        show: true       
+			        show: false       
 			    },
 			    grid: {
 			        hoverable: true,
@@ -3431,7 +3431,7 @@ var Site = {
 			        }
 			    ],
 			    legend: {
-			        show: true       
+			        show: false       
 			    },
 			    grid: {
 			        hoverable: true,
@@ -3558,12 +3558,12 @@ var Site = {
 					content: "%y buku",
 					shifts: {
 						x: 10,
-						y: 20
+						y: -18
 					},
 					defaultTheme: false
 				},
                 legend: {
-                    show: true,
+                    show: false,
                     /*labelFormatter: function(label, series) {
                         return "<span class='legend--formatter-ap'>" + label + "</span>";
                     },
@@ -3634,7 +3634,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: true,
+	                show: false,
 	            },
 	            grid: {
 	                hoverable: true,
@@ -3645,7 +3645,7 @@ var Site = {
 					content: "%y buku",
 					shifts: {
 						x: 10,
-						y: 20
+						y: -18
 					},
 					defaultTheme: false
 				},
@@ -3716,7 +3716,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: true,
+	                show: false,
 	            },
 	            grid: {
 	                hoverable: true,
@@ -3727,7 +3727,7 @@ var Site = {
 					content: "%y buku",
 					shifts: {
 						x: 10,
-						y: 20
+						y: -18
 					},
 					defaultTheme: false
 				},
@@ -3816,7 +3816,8 @@ var Site = {
 		        },
 		        legend: {
 		            backgroundColor: "#EEE",
-		            labelBoxBorderColor: "none"
+		            labelBoxBorderColor: "none",
+		            show: false
 		        },
 		        tooltip: {
 					show: true,
@@ -3884,7 +3885,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: true,
+	                show: false,
 	            },
 	            grid: {
 	                hoverable: true,
@@ -3958,7 +3959,7 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            legend: {
-	                show: true,
+	                show: false,
 	            },
 	            grid: {
 	                hoverable: true,

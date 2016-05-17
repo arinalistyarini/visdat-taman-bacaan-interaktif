@@ -16,38 +16,9 @@
                 </div>
                 <div class="info-content-tepat-waktu-vs-terlambat">
                     Berikut ini adalah perbandingan pengembalian buku yang tepat waktu dengan pengembalian buku yang terlambat:<br><br>
-                        
-                    <!-- <div class="row">
-                        <div class="col-md-9">
-                            <div id="pengembalian-buku-chart-1" class="pengembalian-buku-chart-1-size grid-center"></div>
 
-                            <div id="pengembalian-buku-chart-1-tepat-waktu" class="pengembalian-buku-chart-1-size grid-center"></div>
-
-                            <div id="pengembalian-buku-chart-1-terlambat" class="pengembalian-buku-chart-1-size grid-center"></div>
-                        </div>
-                        <div class="col-md-3">
-                            <form class="filter-update-1">
-                                <div class="checkbox">
-                                  <label>
-                                    <input type="checkbox" class="input-pengembalian-buku-chart-1-tepat-waktu">
-                                    Tepat Waktu
-                                  </label>
-                                </div>
-                                <div class="checkbox">
-                                  <label>
-                                    <input type="checkbox" class="input-pengembalian-buku-chart-1-terlambat">
-                                    Terlambat
-                                  </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <br> -->
-                    <!-- <div class="text-center" style="color: red"><strong>(PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH) (PILIH SALAH SATU YANG ATAS ATAU BAWAH)</strong></div>
-                    <br -->
                     <div class="row">
                         <div class="col-md-9">
-                            <!-- <div id="pengembalian-buku-chart-2" class="pengembalian-buku-chart-2-size grid-center"></div> -->
 
                             <div id="pengembalian-buku-chart-2-batang" class="pengembalian-buku-chart-2-size grid-center"></div>
 
