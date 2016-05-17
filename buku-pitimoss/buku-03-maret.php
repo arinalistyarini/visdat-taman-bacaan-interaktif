@@ -1,3 +1,21 @@
+<?php
+
+$k031 = ['Angel Voice Vol. 20','Takao Koyano','Level Comics (Elex Group)','192','11 Maret 2015'];
+$k032 = ['Love Changes - Return: SC','Saijo Ayano','M&C! Comics','184','11 Februari 2015'];
+$k033 = ['I Would Rather Fall in Love','Goto Misaki','M&C! Comics','192','30 Februari 2015'];
+$k034 = ['Detektif Conan: Serial Detektif Vol. 82','Aoyama Gosho','Elex Media Komputindo','192','30 Februari 2015'];
+$k035 = ['Evening First Star: SC','Nakashima Vega','M&C! Comics','192','4 Maret 2015'];
+$komik03 = [$k031, $k032, $k033, $k034, $k035];
+
+$n031 = ['With No Remorse (Tanpa Penyesalan)','Cindy Gerard','Gramedia Pustaka Utama','416','Februari 2015'];
+$n032 = ['Amore: Let Me Be With You','Ria N. Badaria','Gramedia Pustaka Utama','352','26 Februari 2015'];
+$n033 = ['An Inheritance of Shame','Kate Hewitt','Gramedia Pustaka Utama','256','23 Februari 2015'];
+$n034 = ['R.I.S.A.R.A','Sara Wijayanto','Rak Buku','162','Desember 2014'];
+$n035 = ['The Sum of All Kisses (Sehangat Kecupan)','Julia Quinn','Gramedia Pustaka Utama','432','8 Januari 2015'];
+$nonkomik03 = [$n031, $n032, $n033, $n034, $n035];
+
+?>
+
 <div class="show-all-filter-maret-2015">
     <div class="row">
         <div class="col-md-5 col-md-offset-1"> <!-- MARET TAHUN 2015 - KOMIK -->
@@ -7,315 +25,105 @@
                         Komik
                     </div>
                     <div class="panel-group panel-group-custom" id="accordion-komik-maret-2015">
-                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+
+                    <?php 
+                    for($i=0; $i<5; $i++){
+                        $collapse = '';
+                        if($i == 0) $collapse = 'One';
+                        else if($i == 1) $collapse = 'Two';
+                        else if($i == 2) $collapse = 'Three';
+                        else if($i == 3) $collapse = 'Four';
+                        else $collapse = 'Five';
+
+                        $title = $komik03[$i][0];
+                        if(strlen($title) > 32)
+                            $title = substr($title,0,30) . '...';
+
+                        echo'
+                      <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
                         <div class="panel-heading panel-heading-custom" style="background:#eca821">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapseOne-komik-maret-2015">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapse'.$collapse.'-komik-maret-2015">
                             <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                <img src="img/kumpulan_cover/3/k'.($i+1).'.jpg" class="img-responsive book-cover" align="left">
                                 <span class="book-line-break"></span>
-                                    <span class="book-title">Angel Voice</span><br>
-                                    <span class="book-author">Takao Koyano</span>
+                                    <span class="book-title">'.$title.'</span><br>
+                                    <span class="book-author">'.$komik03[$i][1].'</span>
                             </div>
                           </a>      
                         </div>
-                        <div id="collapseOne-komik-maret-2015" class="panel-collapse collapse">
+                        <div id="collapse'.$collapse.'-komik-maret-2015" class="panel-collapse collapse">
                           <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
                             <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
+                            '.$komik03[$i][0].'
                             <br><br>
                             <strong>Penerbit</strong><br>
-                            Gramedia
+                            '.$komik03[$i][2].'
                             <br><br>
                             <strong>Jumlah halaman</strong><br>
-                            120 halaman
+                            '.$komik03[$i][3].'
                             <br><br>
                             <strong>Tahun Terbit</strong><br>
-                            2018
+                            '.$komik03[$i][4].'
                           </div>
                         </div>
-                      </div>
+                      </div>';
+                  } ?>
 
-                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapseTwo-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Love Changes - Return: SC</span><br>
-                                    <span class="book-author">Saijo Ayano</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseTwo-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapseThree-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">I Would Rather Fall in Love</span><br>
-                                    <span class="book-author">Goto Misaki</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseThree-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
-                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapseFour-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Detektif Conan (Serial Detektif)</span><br>
-                                    <span class="book-author">Aoyama Gosho</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFour-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
-                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-maret-2015" href="#collapseFive-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Evening First Star: SC</span><br>
-                                    <span class="book-author">Nakashima Vega</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFive-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-5"> <!-- MARET TAHUN 2015 - NONKOMIK-->
+        <div class="col-md-5"> <!-- maret TAHUN 2015 - NONKOMIK-->
             <div class="filter-nonkomik-maret-2015-to-clone__container">
                 <div class="filter-nonkomik-maret-2015-to-clone">
                     <div class="best-book-title-nonkomik">
                         Nonkomik
                     </div>
                     <div class="panel-group panel-group-custom" id="accordion-non-komik-maret-2015">
-                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+
+                    <?php 
+                    for($i=0; $i<5; $i++){
+                        $collapse = '';
+                        if($i == 0) $collapse = 'One';
+                        else if($i == 1) $collapse = 'Two';
+                        else if($i == 2) $collapse = 'Three';
+                        else if($i == 3) $collapse = 'Four';
+                        else $collapse = 'Five';
+
+                        $title = $nonkomik03[$i][0];
+                        if(strlen($title) > 32)
+                            $title = substr($title,0,30) . '...';
+
+                        echo'
+                      <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
                         <div class="panel-heading panel-heading-custom" style="background:#eca821">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapseOne-non-komik-maret-2015">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapse'.$collapse.'-non-komik-maret-2015">
                             <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                <img src="img/kumpulan_cover/3/n'.($i+1).'.jpg" class="img-responsive book-cover" align="left">
                                 <span class="book-line-break"></span>
-                                    <span class="book-title">With Noremorse (Tanpa Penyesalan)</span><br>
-                                    <span class="book-author">Cindy Gerard</span>
+                                    <span class="book-title">'.$title.'</span><br>
+                                    <span class="book-author">'.$nonkomik03[$i][1].'</span>
                             </div>
                           </a>      
                         </div>
-                        <div id="collapseOne-non-komik-maret-2015" class="panel-collapse collapse">
+                        <div id="collapse'.$collapse.'-non-komik-maret-2015" class="panel-collapse collapse">
                           <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
                             <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
+                            '.$nonkomik03[$i][0].'
                             <br><br>
                             <strong>Penerbit</strong><br>
-                            Gramedia
+                            '.$nonkomik03[$i][2].'
                             <br><br>
                             <strong>Jumlah halaman</strong><br>
-                            120 halaman
+                            '.$nonkomik03[$i][3].'
                             <br><br>
                             <strong>Tahun Terbit</strong><br>
-                            2018
+                            '.$nonkomik03[$i][4].'
                           </div>
                         </div>
-                      </div>
+                      </div>';
+                  } ?>
 
-                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapseTwo-non-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Amore: Let Me Be With You</span><br>
-                                    <span class="book-author">Ria N. Badaria</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseTwo-non-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapseThree-non-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">An Inheritance of Shame</span><br>
-                                    <span class="book-author">Kate Hewitt</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseThree-non-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
-                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapseFour-non-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">R.I.S.A.R.A</span><br>
-                                    <span class="book-author">Sara Wijayanto</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFour-non-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
-                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-maret-2015" href="#collapseFive-non-komik-maret-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">The Sum of All Kisses (Sehangat Kecupan)</span><br>
-                                    <span class="book-author">Julia Quinn</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFive-non-komik-maret-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
                     </div>
                 </div>
             </div>

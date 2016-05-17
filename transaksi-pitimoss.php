@@ -70,14 +70,17 @@
                                 <!-- <div class="radio">
                                   <label><input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-batang-garis" value="batanggaris">Batang & Garis</label>
                                 </div> -->
-                                <div class="radio">
-                                  <label><input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-batang" value="batang">Batang</label>
-                                </div>
-                                <div class="radio">
-                                  <label><input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-garis" value="garis">Garis</label>
-                                </div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-batang" value="batang">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-garis" value="garis">
+                                    <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                </label>
                                 <br>
                             </form>
+                            <br>
                             <form class="filter-update-2">
                                 <div class="checkbox">
                                   <label>

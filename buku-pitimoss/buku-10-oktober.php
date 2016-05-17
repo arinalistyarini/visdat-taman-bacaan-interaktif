@@ -1,161 +1,74 @@
+<?php
+
+$k101 = ['Knight In The Area, The Vol. 35','Hiroaki Igano','Elex Media Komputindo','192','30 September 2015'];
+$k102 = ['Blooming In The Storm: SC','Natsumi Ouchi','M&C! Comics','184','30 September 2015'];
+$k103 = ['Vanilla Kiss Vol. 2','Yagami Rina','M&C! Comics','192','7 Oktober 2015'];
+$k104 = ['Last Game Vol. 6','Shinobu Amano','M&C! Comics','192','16 September 2015'];
+$k105 = ['Godhand Teru Vol. 60','Kazuki Yamamoto','Elex Media Komputindo','192','2 September 2015'];
+$komik10 = [$k101, $k102, $k103, $k104, $k105];
+
+$n101 = ['Dilan: Dia Adalah Dilanku Tahun 1990','Pidi Baiq','Pastel Books (Mizan Group)','332','2014'];
+$n102 = ['Harlequin Koleksi Istimewa : His Most Exquisite Conquest (Cinta Sehangat Mentari)','Emma Darcy','Gramedia Pustaka Utama','216','21 September 2015'];
+$n103 = ['Drunken Monster: Cacatnya Harian Pidi Baiq','Pidi Baiq','Mizan Group','204','8 April 2013'];
+$n104 = ['Contemporary Romance : Too Hot To Touch (Recipe for Love)','Louisa Edwards','Elex Media Komputindo','448','30 September 2015'];
+$n105 = ['Hellions of Hallstead Hall : A Hellion In Her Bed (Pertaruhan Hati Sang Lord)','Sabrina Jeffries','Gramedia Pustaka Utama','448','14 Agustus 2015'];
+$nonkomik10 = [$n101, $n102, $n103, $n104, $n105];
+
+?>
+
 <div class="show-all-filter-oktober-2015">
     <div class="row">
-        <div class="col-md-5 col-md-offset-1"> <!-- oktober TAHUN 2015 - KOMIK -->
+        <div class="col-md-5 col-md-offset-1"> <!-- OKTOBER TAHUN 2015 - KOMIK -->
             <div class="filter-komik-oktober-2015-to-clone__container">
                 <div class="filter-komik-oktober-2015-to-clone">
                     <div class="best-book-title-komik">
                         Komik
                     </div>
                     <div class="panel-group panel-group-custom" id="accordion-komik-oktober-2015">
-                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+
+                    <?php 
+                    for($i=0; $i<5; $i++){
+                        $collapse = '';
+                        if($i == 0) $collapse = 'One';
+                        else if($i == 1) $collapse = 'Two';
+                        else if($i == 2) $collapse = 'Three';
+                        else if($i == 3) $collapse = 'Four';
+                        else $collapse = 'Five';
+
+                        $title = $komik10[$i][0];
+                        if(strlen($title) > 32)
+                            $title = substr($title,0,30) . '...';
+
+                        echo'
+                      <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
                         <div class="panel-heading panel-heading-custom" style="background:#eca821">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapseOne-komik-oktober-2015">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapse'.$collapse.'-komik-oktober-2015">
                             <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                <img src="img/kumpulan_cover/10/k'.($i+1).'.jpg" class="img-responsive book-cover" align="left">
                                 <span class="book-line-break"></span>
-                                    <span class="book-title">AAAfeb oktober Secret Marriage: SC</span><br>
-                                    <span class="book-author">Ando Mai</span>
+                                    <span class="book-title">'.$title.'</span><br>
+                                    <span class="book-author">'.$komik10[$i][1].'</span>
                             </div>
                           </a>      
                         </div>
-                        <div id="collapseOne-komik-oktober-2015" class="panel-collapse collapse">
+                        <div id="collapse'.$collapse.'-komik-oktober-2015" class="panel-collapse collapse">
                           <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
                             <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
+                            '.$komik10[$i][0].'
                             <br><br>
                             <strong>Penerbit</strong><br>
-                            Gramedia
+                            '.$komik10[$i][2].'
                             <br><br>
                             <strong>Jumlah halaman</strong><br>
-                            120 halaman
+                            '.$komik10[$i][3].'
                             <br><br>
                             <strong>Tahun Terbit</strong><br>
-                            2018
+                            '.$komik10[$i][4].'
                           </div>
                         </div>
-                      </div>
+                      </div>';
+                  } ?>
 
-                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapseTwo-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Hai, Miiko! Vol. 27</span><br>
-                                    <span class="book-author">Eriko Ono</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseTwo-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapseThree-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Naruta Vol. 68</span><br>
-                                    <span class="book-author">Masashi Kisimoto</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseThree-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
-                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapseFour-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Detektif Conan (Serial Detektif) Vol. 81</span><br>
-                                    <span class="book-author">Aoyama Gosho</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFour-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
-                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-oktober-2015" href="#collapseFive-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Prince of Tennis, The II Vol. 8</span><br>
-                                    <span class="book-author">Takeshi Konomi</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFive-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
                     </div>
                 </div>
             </div>
@@ -167,162 +80,57 @@
                         Nonkomik
                     </div>
                     <div class="panel-group panel-group-custom" id="accordion-non-komik-oktober-2015">
-                      <div class="panel panel-default panel-default-custom panel-default-custom-1">
+
+                    <?php 
+                    for($i=0; $i<5; $i++){
+                        $collapse = '';
+                        if($i == 0) $collapse = 'One';
+                        else if($i == 1) $collapse = 'Two';
+                        else if($i == 2) $collapse = 'Three';
+                        else if($i == 3) $collapse = 'Four';
+                        else $collapse = 'Five';
+
+                        $title = $nonkomik10[$i][0];
+                        if(strlen($title) > 32)
+                            $title = substr($title,0,30) . '...';
+
+                        echo'
+                      <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
                         <div class="panel-heading panel-heading-custom" style="background:#eca821">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapseOne-non-komik-oktober-2015">
+                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapse'.$collapse.'-non-komik-oktober-2015">
                             <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
+                                <img src="img/kumpulan_cover/10/n'.($i+1).'.jpg" class="img-responsive book-cover" align="left">
                                 <span class="book-line-break"></span>
-                                    <span class="book-title">ZZZADilan: oktober Dia adalah Dilanku Tahun 1990</span><br>
-                                    <span class="book-author">Pidi Baiq</span>
+                                    <span class="book-title">'.$title.'</span><br>
+                                    <span class="book-author">'.$nonkomik10[$i][1].'</span>
                             </div>
                           </a>      
                         </div>
-                        <div id="collapseOne-non-komik-oktober-2015" class="panel-collapse collapse">
+                        <div id="collapse'.$collapse.'-non-komik-oktober-2015" class="panel-collapse collapse">
                           <div class="panel-body" style=" border-left: 1px solid #eca821 !important; border-right: 1px solid #eca821 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
                             <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
+                            '.$nonkomik10[$i][0].'
                             <br><br>
                             <strong>Penerbit</strong><br>
-                            Gramedia
+                            '.$nonkomik10[$i][2].'
                             <br><br>
                             <strong>Jumlah halaman</strong><br>
-                            120 halaman
+                            '.$nonkomik10[$i][3].'
                             <br><br>
                             <strong>Tahun Terbit</strong><br>
-                            2018
+                            '.$nonkomik10[$i][4].'
                           </div>
                         </div>
-                      </div>
+                      </div>';
+                  } ?>
 
-                      <div class="panel panel-default panel-default-custom panel-default-custom-2">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2b43d">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapseTwo-non-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">In A Blue Moon</span><br>
-                                    <span class="book-author">Ilana Tan</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseTwo-non-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2b43d !important; border-right: 1px solid #f2b43d !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-3">
-                        <div class="panel-heading panel-heading-custom" style="background:#f2c23c">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapseThree-non-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Koala Kumal</span><br>
-                                    <span class="book-author">Raditya Dika</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseThree-non-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f2c23c !important; border-right: 1px solid #f2c23c !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-4">
-                        <div class="panel-heading panel-heading-custom" style="background:#f8d061">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapseFour-non-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Twivortiare</span><br>
-                                    <span class="book-author">Ika Natassa</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFour-non-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #f8d061 !important; border-right: 1px solid #f8d061 !important; border-top: 0 solid #fff !important; border-bottom: 0 solid #fff !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="panel panel-default panel-default-custom panel-default-custom-5">
-                        <div class="panel-heading panel-heading-custom" style="background:#fde17e">      
-                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-oktober-2015" href="#collapseFive-non-komik-oktober-2015">
-                            <div class="panel-title panel-title-custom">
-                                <img src="img/coverDummy.jpg" class="img-responsive book-cover" align="left">
-                                <span class="book-line-break"></span>
-                                    <span class="book-title">Sunshine Becomes You</span><br>
-                                    <span class="book-author">Ilana Tan</span>
-                            </div>
-                          </a>      
-                        </div>
-                        <div id="collapseFive-non-komik-oktober-2015" class="panel-collapse collapse">
-                          <div class="panel-body" style=" border-left: 1px solid #fde17e !important; border-right: 1px solid #fde17e !important; border-top: 0 solid #fff !important; border-bottom: 1px solid #fde17e !important;">
-                            (sebutkan nama judulnya) adalah buku nonkomik yang paling banyak dibaca di Pitimoss sepanjang tahun/bulan maret (atau apapun) 2015.<br>
-                            <br>
-                            <strong>Judul</strong><br>
-                            Dilalalala (sebutkan nama judul)
-                            <br><br>
-                            <strong>Penerbit</strong><br>
-                            Gramedia
-                            <br><br>
-                            <strong>Jumlah halaman</strong><br>
-                            120 halaman
-                            <br><br>
-                            <strong>Tahun Terbit</strong><br>
-                            2018
-                          </div>
-                        </div>
-                      </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="show-komik-or-nonkomik-filter-oktober-2015"> <!-- oktober TAHUN 2015 - HASIL FILTERING -->
+<div class="show-komik-or-nonkomik-filter-oktober-2015"> <!-- OKTOBER TAHUN 2015 - HASIL FILTERING -->
     <div class="row">
         <div class="col-md-7 grid-center">
             <div class="clone-filter-result-oktober-2015"></div>
