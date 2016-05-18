@@ -43,11 +43,11 @@
                                 </div> -->
                                 <label class="radio-inline">
                                     <input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-batang" value="batang">
-                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                    <i class="fa fa-bar-chart icon-size-30" aria-hidden="true"></i>
                                 </label>
-                                <label class="radio-inline">
+                                <label class="radio-inline" style="margin-left: 18px !important;">
                                     <input type="radio" name="jenisgrafik" class="input-pengembalian-buku-chart-2-garis" value="garis">
-                                    <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                    <i class="fa fa-line-chart icon-size-30" aria-hidden="true"></i>
                                 </label>
                                 <br>
                             </form>
@@ -86,8 +86,25 @@
                     Berikut ini adalah rata-rata durasi peminjaman:<br><br>
                         
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <div id="rata-rata-waktu-peminjaman-chart" class="rata-rata-waktu-peminjaman-chart-size grid-center"></div>
+                            <div id="rata-rata-waktu-peminjaman-chart-inverse" class="rata-rata-waktu-peminjaman-chart-size grid-center"></div>
+                        </div>
+                        <div class="col-md-3">
+                            Urutkan:<br>
+                            <form class="filter-urutan">
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="urutanratarata" class="sort-ascending-ratarata" value="batang">Tercepat ke terlama
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="urutanratarata" class="sort-descending-ratarata" value="garis">Terlama ke tercepat
+                                  </label>
+                                </div>
+                                <br>
+                            </form>
                         </div>
                     </div>
                 </div>

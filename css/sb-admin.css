@@ -632,3 +632,89 @@ a.toggle-info:focus {
     width: 720px;
     height: 400px;
 }
+
+.panel-heading-custom-background-1 {
+    background: #eca821 !important;
+}
+
+.panel-heading-custom-background-2 {
+    background: #f2b43d !important;
+}
+
+.panel-heading-custom-background-3 {
+    background: #f2c23c !important;
+}
+
+.panel-heading-custom-background-4 {
+    background: #f8d061 !important;
+}
+
+.panel-heading-custom-background-5 {
+    background: #fde17e !important;
+}
+
+.checkbox input[type=checkbox].input-pengembalian-buku-chart-2-tepat-waktu {
+  width: 16px !important;
+  height: 15px !important;
+  margin-right: 8px !important;
+  cursor: pointer;
+  font-size: 12px !important;
+}
+
+
+.checkbox input[type=checkbox].input-pengembalian-buku-chart-2-tepat-waktu:after {
+    content: " " ;
+    background-color: #89cf89 !important;
+    color: #fff;
+    display: inline-block;
+    visibility: visible;
+}
+
+.checkbox input[type=checkbox].input-pengembalian-buku-chart-2-tepat-waktu:checked:after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    padding: 2px 2px;
+}
+
+input.input-pengembalian-buku-chart-2-tepat-waktu[type=checkbox]:not(:checked):after {
+    background-color: #89cf89;
+    color: #fff;
+    display: inline-block;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+input.input-pengembalian-buku-chart-2-terlambat[type=checkbox] {
+  width: 16px;
+  height: 15px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+
+input.input-pengembalian-buku-chart-2-terlambat[type=checkbox]:after {
+    content: " ";
+    background-color: #df5842;
+    color: #fff;
+    display: inline-block;
+    visibility: visible;
+}
+
+input.input-pengembalian-buku-chart-2-terlambat[type=checkbox]:checked:after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    padding: 2px 2px;
+}
+
+input.input-pengembalian-buku-chart-2-terlambat[type=checkbox]:not(:checked):after {
+    background-color: #df5842;
+    color: #fff;
+    display: inline-block;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.icon-size-30 {
+    font-size: 25px !important;
+}

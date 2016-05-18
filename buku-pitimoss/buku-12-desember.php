@@ -41,7 +41,7 @@ $nonkomik12 = [$n121, $n122, $n123, $n124, $n125];
 
                         echo'
                       <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
-                        <div class="panel-heading panel-heading-custom" style="background:#eca821">      
+                        <div class="panel-heading panel-heading-custom panel-heading-custom-background-'.($i+1).'">      
                           <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-komik-desember-2015" href="#collapse'.$collapse.'-komik-desember-2015">
                             <div class="panel-title panel-title-custom">
                                 <img src="img/kumpulan_cover/12/k'.($i+1).'.jpg" class="img-responsive book-cover" align="left">
@@ -96,7 +96,7 @@ $nonkomik12 = [$n121, $n122, $n123, $n124, $n125];
 
                         echo'
                       <div class="panel panel-default panel-default-custom panel-default-custom-'.($i+1).'">
-                        <div class="panel-heading panel-heading-custom" style="background:#eca821">      
+                        <div class="panel-heading panel-heading-custom panel-heading-custom-background-'.($i+1).'">      
                           <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-non-komik-desember-2015" href="#collapse'.$collapse.'-non-komik-desember-2015">
                             <div class="panel-title panel-title-custom">
                                 <img src="img/kumpulan_cover/12/n'.($i+1).'.jpg" class="img-responsive book-cover" align="left">

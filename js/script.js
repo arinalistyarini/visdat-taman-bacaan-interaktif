@@ -35,6 +35,8 @@ var Site = {
 		// Site.filterPengembalianBukuChart1();
 		Site.filterPengembalianBukuChart2();
 		Site.createChartRataRataWaktuPeminjaman();
+		Site.createChartRataRataWaktuPeminjamanInverse();
+		Site.sortingRataRataWaktuPeminjaman();
 
 	},
 
@@ -1373,6 +1375,7 @@ var Site = {
 	            },
 	            xaxis: {
 	                axisLabelUseCanvas: true,
+	                tickFormatter: formatterRibu,
 	                axisLabelPadding: 10,
 	                max: 55000,
 	                tickColor: "#ccc",
@@ -1388,6 +1391,7 @@ var Site = {
 	                axisLabelPadding: 3,
 	                tickLength: 0,
 	                ticks: ticks,
+	                tickFormatter: formatterRibu,
 	                color: "#444",
 	                font: {
 						weight:"bold",
@@ -1404,7 +1408,11 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%y: %x buah",
+					//content: "%y: %x buah",
+					content: function(label, xval, yval) {
+			          var content = xval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: -20
@@ -1412,6 +1420,13 @@ var Site = {
 					defaultTheme: false
 				},
 	        };
+
+	        function formatterRibu(val,axis) {
+			    if (val >= 1000) {
+			        return (val / 1000).toFixed(0) + 'ribu';
+			    }
+			    return val;
+			}
 
 	        $.plot($("#jumlah-buku-chart"), dataSet, options);
         }
@@ -3331,7 +3346,8 @@ var Site = {
 							size: 14
 						},
 						color: "#444",
-						tickColor: "#ccc"
+						tickColor: "#ccc",
+						tickFormatter: formatterRibu,
 			        }
 			    ],
 			    legend: {
@@ -3343,7 +3359,10 @@ var Site = {
 			    },
 			    tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: 20
@@ -3427,7 +3446,8 @@ var Site = {
 							size: 14
 						},
 						color: "#444",
-						tickColor: "#ccc"
+						tickColor: "#ccc",
+						tickFormatter: formatterRibu
 			        }
 			    ],
 			    legend: {
@@ -3439,7 +3459,10 @@ var Site = {
 			    },
 			    tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: 20
@@ -3536,7 +3559,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 			    },
                 grid: {
                 	show: true,
@@ -3555,7 +3579,10 @@ var Site = {
                 },
                 tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: -18
@@ -3631,7 +3658,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 	            },
 	            legend: {
 	                show: false,
@@ -3642,7 +3670,10 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: -18
@@ -3713,7 +3744,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 	            },
 	            legend: {
 	                show: false,
@@ -3724,7 +3756,11 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%y buku",
+					//content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 10,
 						y: -18
@@ -3732,6 +3768,14 @@ var Site = {
 					defaultTheme: false
 				},
 	        };
+
+	        function formatterRibu(val,axis) {
+			    if (val >= 1000) {
+			        return (val / 1000).toFixed(0) + 'ribu';
+			    }
+			    return val;
+			}
+
 	        $.plot($("#pengembalian-buku-chart-2-terlambat-garis"), data, options);
 
 			/* TERLAMBAT + TEPAT WAKTU - BATANG */
@@ -3808,7 +3852,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 		        },
 		        grid: {
 		            hoverable: true,
@@ -3821,7 +3866,11 @@ var Site = {
 		        },
 		        tooltip: {
 					show: true,
-					content: "%y buku",
+					//content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 22,
 						y: -20
@@ -3882,7 +3931,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 	            },
 	            legend: {
 	                show: false,
@@ -3893,7 +3943,10 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 15,
 						y: -20
@@ -3956,7 +4009,8 @@ var Site = {
 						size: 14
 					},
 					color: "#444",
-					tickColor: "#ccc"
+					tickColor: "#ccc",
+					tickFormatter: formatterRibu,
 	            },
 	            legend: {
 	                show: false,
@@ -3967,7 +4021,10 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%y buku",
+					content: function(label, xval, yval) {
+			          var content = yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 15,
 						y: -20
@@ -4246,24 +4303,25 @@ var Site = {
         var lastPart = splitUrlArray.pop();
         if(lastPart == "transaksi-pitimoss.php"){
 			var data = [
-				[0, 1349],
-				[1, 68472],
+				[0, 68472],
+				[1, 26028],
 				[2, 18449],
-				[3, 26028],
+				[3, 15906],
 				[4, 1858],
-				[5, 617],
-				[6, 213],
-				[7, 15906],
-				[8, 0],
+				[5, 1349],
+				[6, 617],
+				[7, 213],
+				[8, 194],
+				/*[8, 0],
 				[9, 22],
 				[10, 65],
 				[11, 0],
 				[12, 0],
 				[13, 0],
-				[14, 194],
+				[14, 194],*/
 			];
 	        var dataset = [{ label: "Durasi peminjaman", data: data, color: "#89cf89" }];
-	 		
+	 		var ticks = [[0, "1 hari"], [1, "3 hari"], [2, "2 hari"], [3, "7 hari"], [4, "4 hari"], [5, "0 hari"], [6, "5 hari"], [7, "6 hari"], [8, "14 hari"]];
 
 	        var options = {
 	            series: {
@@ -4276,7 +4334,7 @@ var Site = {
 	            },
 	            bars: {
 	                align: "center",
-	                barWidth: 0.4,
+	                barWidth: 0.3,
 	                fillColor: "#89cf89",
 
 	            },
@@ -4285,6 +4343,8 @@ var Site = {
 	                axisLabelUseCanvas: false,
 	                axisLabelFontSizePixels: 12,
 	                tickLength: 0,
+	                ticks: ticks,
+	                min: -0.4,
 	                font: {
 						weight:"bold",
 						size: 14
@@ -4293,11 +4353,12 @@ var Site = {
 					tickColor: "#ccc"
 	            },
 	            yaxis: {
-	            	tickSize: 4000,
+	            	tickSize: 8000,
 	            	font: {
 						weight:"bold",
 						size: 14
 					},
+					tickFormatter: formatterRibu,
 					color: "#444",
 					tickColor: "#ccc"
 	            },
@@ -4310,7 +4371,11 @@ var Site = {
 	            },
 	            tooltip: {
 					show: true,
-					content: "%x hari:<br>%y buku",
+					//content: "%x hari:<br>%y buku",
+					content: function(label, xval, yval) {
+			          var content = "%x: <br>" + yval + " buku";
+			          return content;
+			      	},
 					shifts: {
 						x: 17,
 						y: -29
@@ -4319,7 +4384,132 @@ var Site = {
 				},
 	        };
 
+	        function formatterRibu(val,axis) {
+			    if (val >= 1000) {
+			        return (val / 1000).toFixed(0) + 'ribu';
+			    }
+			    return val;
+			}
+
 	        $.plot($("#rata-rata-waktu-peminjaman-chart"), dataset, options);
 		}
+	},
+
+	createChartRataRataWaktuPeminjamanInverse: function(){
+		var windowLoc = $(location).attr('pathname');
+        var splitUrlArray = windowLoc.split('/');
+        var lastPart = splitUrlArray.pop();
+        if(lastPart == "transaksi-pitimoss.php"){
+			var data = [
+				[0, 194], //14
+				[1, 213], //6
+				[2, 617], //5
+				[3, 1349], //0
+				[4, 1858], //4
+				[5, 15906], //7
+				[6, 18449], //2
+				[7, 26028], //3
+				[8, 68472], //1
+				/*[8, 0],
+				[9, 22],
+				[10, 65],
+				[11, 0],
+				[12, 0],
+				[13, 0],
+				[14, 194],*/
+			];
+	        var dataset = [{ label: "Durasi peminjaman", data: data, color: "#89cf89" }];
+	 		var ticks = [[0, "14 hari"], [1, "6 hari"], [2, "5 hari"], [3, "0 hari"], [4, "4 hari"], [5, "7 hari"], [6, "2 hari"], [7, "3 hari"], [8, "1 hari"]];
+
+	        var options = {
+	            series: {
+	                bars: {
+	                    show: true,
+	                    lineWidth: 0,
+	                    fill: "#89cf89",
+	        			fillColor: "#89cf89"
+	                }
+	            },
+	            bars: {
+	                align: "center",
+	                barWidth: 0.3,
+	                fillColor: "#89cf89",
+
+	            },
+	            xaxis: {
+	                tickSize: 1,
+	                axisLabelUseCanvas: false,
+	                axisLabelFontSizePixels: 12,
+	                tickLength: 0,
+	                ticks: ticks,
+	                min: -0.4,
+	                font: {
+						weight:"bold",
+						size: 14
+					},
+					color: "#444",
+					tickColor: "#ccc"
+	            },
+	            yaxis: {
+	            	tickSize: 8000,
+	            	font: {
+						weight:"bold",
+						size: 14
+					},
+					tickFormatter: formatterRibu,
+					color: "#444",
+					tickColor: "#ccc"
+	            },
+	            legend: {
+	                show: false,
+	            },
+	            grid: {
+	                hoverable: true,
+	                borderWidth: 0
+	            },
+	            tooltip: {
+					show: true,
+					//content: "%x hari:<br>%y buku",
+					content: function(label, xval, yval) {
+			          var content = "%x: <br>" + yval + " buku";
+			          return content;
+			      	},
+					shifts: {
+						x: 17,
+						y: -29
+					},
+					defaultTheme: false
+				},
+	        };
+
+	        function formatterRibu(val,axis) {
+			    if (val >= 1000) {
+			        return (val / 1000).toFixed(0) + 'ribu';
+			    }
+			    return val;
+			}
+
+	        $.plot($("#rata-rata-waktu-peminjaman-chart-inverse"), dataset, options);
+		}
+	},
+
+	sortingRataRataWaktuPeminjaman: function(){
+		$('#rata-rata-waktu-peminjaman-chart').show();
+		$('#rata-rata-waktu-peminjaman-chart-inverse').hide();
+
+    	$('.sort-ascending-ratarata').prop('checked', true);
+    	$('.sort-descending-ratarata').prop('checked', false);
+
+    	$('form.filter-urutan').change(function () {
+    		if($('.sort-ascending-ratarata').is(':checked') && !($('.sort-descending-ratarata').is(':checked'))) {
+    			$('#rata-rata-waktu-peminjaman-chart').show();
+				$('#rata-rata-waktu-peminjaman-chart-inverse').hide();
+    		}
+    		if(!($('.sort-ascending-ratarata').is(':checked')) && ($('.sort-descending-ratarata').is(':checked'))) {
+    			$('#rata-rata-waktu-peminjaman-chart').hide();
+				$('#rata-rata-waktu-peminjaman-chart-inverse').show();
+    		}
+    	});
+			
 	},
 }
