@@ -91,16 +91,16 @@
                             <div id="rata-rata-waktu-peminjaman-chart-inverse" class="rata-rata-waktu-peminjaman-chart-size grid-center"></div>
                         </div>
                         <div class="col-md-3">
-                            Urutkan:<br>
+                            Urutkan (berdasarkan jumlah peminjam):<br>
                             <form class="filter-urutan">
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="urutanratarata" class="sort-ascending-ratarata" value="batang">Tercepat ke terlama
+                                    <input type="radio" name="urutanratarata" class="sort-ascending-ratarata" value="batang">Terbanyak ke Tersedikit
                                   </label>
                                 </div>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="urutanratarata" class="sort-descending-ratarata" value="garis">Terlama ke tercepat
+                                    <input type="radio" name="urutanratarata" class="sort-descending-ratarata" value="garis">Tersedikit ke Terbanyak
                                   </label>
                                 </div>
                                 <br>
